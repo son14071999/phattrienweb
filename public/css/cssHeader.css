@@ -1,0 +1,50 @@
+
+.header-1{
+    background-color: #cecece;
+}
+.header-2{
+    padding: 20px;
+    background-color: white;
+}
+.header-2 img{
+    width: 70%;
+}
+.btn-login{
+    margin-left: 20px;
+    background-color: #3bbc3b;
+    border-radius: 20px;
+    padding:10px 20px;
+}
+.img-logo{
+    max-width: 200px;
+    height: auto;
+}
+.menu{
+    background-color: #176c24;
+
+}
+.menu a{
+    color: white;
+}
+.menu li:hover{
+    background-color: #17bc10;
+}
+.sticky {
+    position: fixed;
+    width: 100%;
+    top: 0;
+}
+
+.sticky + .content {
+    padding-top: 60px;
+}
+
+.daotao>div>li{
+    display: none;
+}
+.daotao:hover>div>li{
+    display: block;
+}
+#menu{
+    z-index: 3;
+}

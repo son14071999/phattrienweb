@@ -1,0 +1,35 @@
+footer{
+    background-color: #777777;
+    margin: 0;
+}
+.title-footer{
+    font-size: 1.5em;
+    font-weight: bold;
+    color:white;
+}
+.footer-1{
+    padding-left: 50px;
+    margin: 0;
+}
+hr{
+    border-top: 5px solid #a0a0a0;
+    width: 5%;
+    margin-left: 0;
+}
+.footer-1 i{
+    font-size: 24px;
+    color: black;
+    margin-right: 5px;
+}
+
+.footer-2{
+    background-color: #5b5b5b;
+    padding: 5px;
+
+}
+
+.footer-2 > div{
+    font-weight: initial;
+    text-align: center;
+    font-size: 1.3em;
+}
