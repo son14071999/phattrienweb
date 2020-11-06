@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\nganhan;
 use Illuminate\Http\Request;
 use App\tieuchi;
 use App\donvi;
@@ -90,7 +91,49 @@ class ControllerTieuchi extends Controller
         return view('tieuchi',compact('daihan','tieuchi', 'truong','dv','donvi','select_tr','select_tc','select_dv'));
     }
 
+
+    function getSearch(Request $request)
+    {
+        $search = $request->search;
+        $nganhan = nganhan::all();
+        for($i=0; $i<count($nganhan); $i++)
+        {
+            $nganhan[$i]->tieuchi = daihan::where('id',$nganhan[$i]->ma_tc)->get()[0];
+            $nganhan[$i]->truong = truong::where('id',$nganhan[$i]->tieuchi->ma_truong)->get()[0]->ten;
+            $nganhan[$i]->tieuchi = tieuchi::where('id',$nganhan[$i]->tieuchi->ma_tc)->get()[0];
+            $nganhan[$i]->mota = $nganhan[$i]->tieuchi->moTa;
+            $nganhan[$i]->donvi = donvi::where('id',$nganhan[$i]->tieuchi->id)->get()[0]->ten;
+            $nganhan[$i]->tieuchi = $nganhan[$i]->tieuchi->ten;
+        }
+        $nh1 = array();
+        foreach ($nganhan as $nh)
+        {
+            $tc = strpos($nh->tieuchi,$search);
+            $tr = strpos($nh->truong, $search);
+            $dv = strpos($nh->donvi, $search);
+            $ht = strpos($nh->xong, $search);
+            $t = strpos($nh->tong, $search);
+            $n = strpos($nh->nam, $search);
+            $mt = strpos($nh->mota, $search);
+            if(!($tc=='' && $t == '' && $dv =='' && $ht=='' && $n == '' && $tr == '' && $mt == ''))
+            {
+                $nh->tieuchi = str_replace($search, '<mark style="background: yellow">'.$search.'</mark>', $nh->tieuchi);
+                $nh->truong = str_replace($search, '<mark style="background: yellow">'.$search.'</mark>', $nh->truong);
+                $nh->donvi = str_replace($search, '<mark style="background: yellow">'.$search.'</mark>', $nh->donvi);
+                $nh->xong = str_replace($search, '<mark style="background: yellow">'.$search.'</mark>', $nh->xong);
+                $nh->tong = str_replace($search, '<mark style="background: yellow">'.$search.'</mark>', $nh->tong);
+                $nh->nam = str_replace($search, '<mark style="background: yellow">'.$search.'</mark>', $nh->nam);
+                $nh->mota = str_replace($search, '<mark style="background: yellow">'.$search.'</mark>', $nh->mota);
+                array_push($nh1, $nh);
+            }
+        }
+        $nganhan = $nh1;
+        return view('search', compact('nganhan', 'search'));
+    }
+
     function getThongke(){
         return 'chưa có j';
     }
+
+
 }

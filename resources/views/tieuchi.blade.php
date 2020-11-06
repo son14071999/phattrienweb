@@ -13,7 +13,7 @@
                         <option value="all">all</option>
                     @endif
                     @foreach($tieuchi as $tc)
-                        @if($tc->ma_tc==$select_tr)
+                        @if($tc->ten==$select_tc)
                             <option value="{{$tc->ten}}" selected>{{$tc->ten}}</option>
                         @else
                             <option value="{{$tc->ten}}">{{$tc->ten}}</option>
@@ -29,7 +29,7 @@
                         <option value="all">all</option>
                     @endif
                     @foreach($truong as $t)
-                        @if($t->ma_truong==$select_tr)
+                        @if($t->ten==$select_tr)
                             <option value="{{$t->ten}}" selected>{{$t->ten}}</option>
                         @else
                                 <option value="{{$t->ten}}">{{$t->ten}}</option>
@@ -46,7 +46,7 @@
                         <option value="all">all</option>
                     @endif
                     @foreach($donvi as $d)
-                        @if($d->don_vi==$select_dv)
+                        @if($d->ten==$select_dv)
                             <option value="{{$d->ten}}" selected>{{$d->ten}}</option>
                         @else
                             <option value="{{$d->ten}}">{{$d->ten}}</option>

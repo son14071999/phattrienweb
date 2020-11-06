@@ -11,11 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-//        $this->call('truong');
-//        $this->call('donvi');
-//        $this->call('tieuchi');
-//        $this->call('daihan');
-//            $this->call('nganhan');
+        $this->call('truong');
+        $this->call('donvi');
+        $this->call('tieuchi');
+        $this->call('daihan');
+            $this->call('nganhan');
             $this->call('account');
         // $this->call(UserSeeder::class);
     }
@@ -97,19 +97,25 @@ class daihan extends Seeder{
 class nganhan extends Seeder{
     public function run()
     {
+        $nam = 2025;
         for($i=1; $i<=4;$i++){
+            if($i%2==0)
+                $nam = 2024;
+            else
+                $nam = 2029;
             for($j=1; $j<=5;$j++) {
                 $a = rand(100, 100000);
                 $b = $a + rand(0, 1000);
                 DB::table('nganhan')->insert(
                     [
                         'ma_tc' => $i,
-                        'nam' => $j,
+                        'nam' => $j+$nam,
                         'xong' => $a,
                         'tong' => $b,
                     ]
                 );
             }
+
         }
     }
 

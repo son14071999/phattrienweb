@@ -21,8 +21,9 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <div class="mr-auto"></div>
-                        <form class="form-inline my-0 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <form class="form-inline my-0 my-lg-0" method="post" action="{{route('search')}}">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search">
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
                         @if(Auth::check())
