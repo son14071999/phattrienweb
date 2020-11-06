@@ -104,8 +104,8 @@ class nganhan extends Seeder{
             else
                 $nam = 2029;
             for($j=1; $j<=5;$j++) {
-                $a = rand(100, 100000);
-                $b = $a + rand(0, 1000);
+                $a = rand(10, 100000);
+                $b = $a + rand(1000, 100000);
                 DB::table('nganhan')->insert(
                     [
                         'ma_tc' => $i,

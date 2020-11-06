@@ -25,5 +25,6 @@ Route::get('login', 'ControllerAccount@getLogin')->name('getLogin');
 Route::post('login', 'ControllerAccount@postLogin')->name('postLogin');
 Route::get('logout', 'ControllerAccount@logout')->name('logout');
 Route::get('thong-ke', 'ControllerTieuchi@getThongke')->name('thongke');
+
 Route::post('tieu-chi','ControllerTieuchi@getLoc')->name('loc');
 Route::post('search','ControllerTieuchi@getSearch')->name('search');

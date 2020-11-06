@@ -132,7 +132,26 @@ class ControllerTieuchi extends Controller
     }
 
     function getThongke(){
-        return 'chưa có j';
+        $nganhan = nganhan::all();
+        $hoanThanh = array();
+        $nam = array();
+        $tong = array();
+        foreach ($nganhan as $nh)
+        {
+            if(in_array($nh->nam, $nam)==false){
+                array_push($nam, $nh->nam);
+                array_push($hoanThanh, 0);
+                array_push($tong, 0);
+            }
+        }
+        sort($nam);
+        foreach ($nganhan as $nh)
+        {
+            $index = array_search($nh->nam, $nam);
+            $hoanThanh[$index] = $hoanThanh[$index] + $nh->xong;
+            $tong[$index] = $tong[$index] + $nh->tong;
+        }
+        return view('chart', compact('arr','nam','hoanThanh','tong'));
     }
 
 
