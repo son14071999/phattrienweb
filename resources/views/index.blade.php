@@ -23,12 +23,12 @@
 </head>
 <div class="container-fluid bg-secondary">
     @include('block.header')
-    {{--    <div id="content">--}}
-    {{--        @yield('content')--}}
-    {{--    </div>--}}
     @include('block.body')
+        <div id="content">
+            @yield('content')
+        </div>
+    @include('block.donvitructhuoc')
     @include('block.footer')
-
 </div>
 
 
