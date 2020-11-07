@@ -43,7 +43,7 @@
         <div class="col-sm-12">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('trangchu')}}" style="color: white">Trang chủ</a>
+                    <a class="nav-link" href="{{route('index')}}" style="color: white">Trang chủ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('gioithieu')}}">Giới thiệu</a>

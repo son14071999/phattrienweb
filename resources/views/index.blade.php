@@ -23,11 +23,13 @@
 </head>
 <div class="container-fluid bg-secondary">
     @include('block.header')
-    @include('block.body')
+{{--    @include('block.body')--}}
+    @yield('slibar')
         <div id="content">
             @yield('content')
         </div>
-    @include('block.donvitructhuoc')
+{{--    @include('block.donvitructhuoc')--}}
+    @yield('donvitructhuoc')
     @include('block.footer')
 </div>
 

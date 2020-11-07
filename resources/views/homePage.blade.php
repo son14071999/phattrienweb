@@ -1,7 +1,7 @@
 @extends('index')
-@section('sidebar')
-    @include('block.sidebar')
+@section('slibar')
+    @include('block.body')
 @endsection
-@section('content')
-    @include('block.list_de')
+@section('donvitructhuoc')
+    @include('block.donvitructhuoc')
 @endsection
