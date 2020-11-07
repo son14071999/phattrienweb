@@ -3,7 +3,7 @@
     background-color: #cecece;
 }
 .header-2{
-    padding: 20px;
+    /*padding: 20px;*/
     background-color: white;
 }
 .header-2 img{
@@ -18,10 +18,14 @@
 .img-logo{
     max-width: 200px;
     height: auto;
+    margin-left: 200px;
 }
 .menu{
     background-color: #176c24;
 
+}
+.navbar-collapse{
+    margin-right: 100px;
 }
 .menu a{
     color: white;

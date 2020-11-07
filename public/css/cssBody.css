@@ -1,0 +1,113 @@
+div#slider {
+    overflow: hidden;
+}
+div#slider figure{
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    text-align: left;
+    font-size: 0;
+    animation: 30s slidy infinite;
+}
+div#slider figure img {
+    height: 500px;
+    width: 20%;
+    float: left;
+}
+
+@keyframes slidy {
+    0% {
+        left: 0%;
+    }
+    20% {
+        left: 0%;
+    }
+    25% {
+        left: -100%;
+    }
+    45% {
+        left: -100%;
+    }
+    50% {
+        left: -200%;
+    }
+    70% {
+        left: -200%;
+    }
+    75% {
+        left: -300%;
+    }
+    95%{
+        left: -300%;
+    }
+    100% {
+        left: -400%;
+    }
+
+}
+
+.section-title {
+    margin-top: 30px;
+    position: relative;
+    -js-display: flex;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+}
+b, strong {
+    font-weight: bolder;
+}
+.lyn{
+    display: block;
+    -ms-flex: 1;
+    flex: 1;
+    height: 2px;
+    opacity: .1;
+    background-color: currentColor;
+}
+.section-title span {
+    text-transform: uppercase;
+    border: 2px solid rgba(0,0,0,0.1);
+    padding: .3em .8em;
+}
+h6{
+    text-align: center;
+}
+div#slider_logo {
+    overflow: hidden;
+}
+div#slider_logo figure > div{
+    float: left;
+}
+div#slider_logo figure > div >img{
+    margin-left: 100px;
+}
+div#slider_logo figure{
+    position: relative;
+    width: 300%;
+    animation: 20s slidelogo infinite;
+}
+@keyframes slidelogo{
+    0% {
+        left: 0%;
+    }
+    20% {
+        left: 0%;
+    }
+    45% {
+        left: -100%;
+    }
+    65% {
+        left: -100%;
+    }
+    100% {
+        left: -200%;
+    }
+}

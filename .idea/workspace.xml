@@ -20,7 +20,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c17d8374-292d-4552-a5f5-6e176cfa9731" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/css/cssBody.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/Nha_dieu_hanh_144_Xuan_Thuy_26.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/cong_nghe_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/dhkhtn.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/dhqg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/dhtn2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/khoa_luat_logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/nhan_van_logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/nhanvan.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/tu_nhien_logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/y_duoc_logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/block/body.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/cssHeader.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/cssHeader.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/app/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/app/public/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/app/public/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/cache/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/cache/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/cache/data/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/cache/data/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/sessions/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/sessions/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/testing/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/testing/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/framework/views/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/framework/views/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/logs/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/storage/logs/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,23 +178,24 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="D:/laragon/www/group_07/DuAn" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp\www\WebNhom7\phattrienweb\public\images" />
+      <recent name="D:\laragon\www\nhom7\public\css" />
+      <recent name="D:\laragon\www\nhom7\resources\views" />
+      <recent name="D:\laragon\www\nhom7\resources" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\nhom7\public\images" />
       <recent name="C:\xampp\htdocs\nhom7\public" />
       <recent name="C:\xampp\htdocs\nhom7\public\hus" />
       <recent name="D:\laragon\www\nhom7\public\images" />
       <recent name="D:\laragon\www\nhom7\public\logovnu" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\laragon\www\nhom7\public\css" />
-      <recent name="D:\laragon\www\nhom7\resources\views" />
-      <recent name="D:\laragon\www\nhom7\resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -204,6 +229,8 @@
       <workItem from="1604659261153" duration="2009000" />
       <workItem from="1604661625676" duration="1617000" />
       <workItem from="1604665284517" duration="2666000" />
+      <workItem from="1604673318119" duration="9488000" />
+      <workItem from="1604710887021" duration="1800000" />
     </task>
     <servers />
   </component>
@@ -239,10 +266,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1604653364907" />
-    <state x="478" y="145" width="579" height="534" key="find.popup" timestamp="1604337035672">
+    <state x="478" y="145" width="579" height="534" key="find.popup" timestamp="1604689677675">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="478" y="145" width="579" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1604337035672" />
+    <state x="478" y="145" width="579" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1604689677675" />
+    <state x="864" y="216" key="run.anything.popup" timestamp="1604685200737">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="864" y="216" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1604685200737" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1604652058323">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
