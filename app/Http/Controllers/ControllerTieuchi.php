@@ -75,7 +75,7 @@ class ControllerTieuchi extends Controller
         $donvi = $g[2];
         $daihan = $g[3];
 
-        return view('tieuchi',compact('daihan','tieuchi', 'truong','dv','donvi','select_tr','select_tc','select_dv'));
+        return view('tieuchi',compact('daihan','tieuchi', 'truong','donvi','select_tr','select_tc','select_dv'));
     }
 
     function getLoc(Request $request){

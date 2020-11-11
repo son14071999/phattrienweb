@@ -34,3 +34,8 @@ Route::post('search','ControllerTieuchi@getSearch')->name('search');
 
 $ManagerAdminController = 'ManagerAdminController@';
 Route::get("/admin/index", $ManagerAdminController.'index');
+
+$ManagerAdminTieuChiController = 'ManagerAdminTieuChiController';
+Route::resource("/admin/tieuchi", $ManagerAdminTieuChiController);
+Route::get("/admin/showtc/{id}/{id1}", 'ManagerAdminTieuChiController@showTC');
+Route::put("/admin/updatetc/{id}/{id1}", 'ManagerAdminTieuChiController@updateTC');

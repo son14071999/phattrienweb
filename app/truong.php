@@ -14,4 +14,6 @@ class truong extends Model
     public function daihan(){
         return $this->hasMany('App\account', 'id');
     }
+
+    public $timestamps = false;
 }

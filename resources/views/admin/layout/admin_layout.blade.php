@@ -25,15 +25,6 @@
   <!-- theme css -->
   <link href="{{ asset('admin/assets/css/theme.css')}}" rel="stylesheet">
   
-  <style type="text/css">
-    .timkiem_ {
-    margin-left: 800px;
-    }
-    span.hienthimes {
-    color: black;
-    font-size: 25px;
-}
-  </style>
   
 </head>
 
@@ -94,13 +85,13 @@
           
             <a class="nav-link nav-toggle" href="{{ URL::to('/trangchu-admin') }}"> <i class="fa fa-th-large"></i> <span class="title" style="font-size: 15px; margin: 5px">Quản lý</span> <span class="arrow"></span> </a>
             <li class="nav-item">
-            <a class="nav-link nav-toggle" href="javascript:;"> <i class="fa fa-file-o"></i> <span class="title">Thể loại đề thi</span> <span class="arrow"></span> </a>
+            <a class="nav-link nav-toggle" href="javascript:;"> <i class="fa fa-file-o"></i> <span class="title">Tiêu chí</span> <span class="arrow"></span> </a>
             <ul class="sub-menu">
               <li class="nav-item">
-                <a class="nav-link nav-toggle" href="{{URL::to('/add-category-exam')}}"> <span class="title">Thêm thể loại</span> </a>
+                <a class="nav-link nav-toggle" href="{{URL::to('/admin/tieuchi/create')}}"> <span class="title">Thêm tiêu chí</span> </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-toggle" href="{{ URL::to('/all-category-exam') }}"> <span class="title">Tất cả thể loại đề</span> </a>
+                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/tieuchi') }}"> <span class="title">Danh sách tiêu chí</span> </a>
               </li>
             </ul>
           </li>
@@ -164,70 +155,7 @@
   <!-- main js -->
   <script src="{{ asset('admin/assets/js/main.js') }}"></script>
 
-  <script>
-  $(document).ready(function(){
-
-   $('#search').keyup(function(){
-    var query = $(this).val(); 
-    if(query != '') 
-    {
-     var _token = $('input[name="_token"]').val(); // token để mã hóa dữ liệu
-     $.ajax({
-      url:"{{ URL::to('search-by-name') }}", 
-      method:"POST", 
-      data:{query:query, _token:_token},
-      success:function(data){ //dữ liệu nhận về
-       $('#hienthi').fadeIn();  
-       $('#hienthi').html(data); 
-     }
-   });
-
-     
-   }
- });
-
-   $(document).on('click', 'li', function(){  
-    $('#hienthi').val($(this).text());  
-    $('#hienthi').fadeOut();  
-  });  
-
-   
-
- });
-</script>
-
-
-<script>
-  $(document).ready(function(){
-
-   $('#search_de').keyup(function(){ //bắt sự kiện keyup khi người dùng gõ từ khóa tim kiếm
-    var query = $(this).val(); 
-    if(query != '') 
-    {
-     var _token = $('input[name="_token"]').val(); // token để mã hóa dữ liệu
-     $.ajax({
-      url:"{{ URL::to('/search/by-name') }}", 
-      method:"POST", 
-      data:{query:query, _token:_token},
-      success:function(data){ //dữ liệu nhận về
-       $('#hienthi').fadeIn();  
-       $('#hienthi').html(data); 
-     }
-   });
-
-     
-   }
- });
-
-   $(document).on('click', 'li', function(){  
-    $('#hienthi').val($(this).text());  
-    $('#hienthi').fadeOut();  
-  });  
-
-   
-
- });
-</script>
+  
 
 
 

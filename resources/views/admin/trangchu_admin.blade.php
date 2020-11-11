@@ -1,5 +1,5 @@
- @extends('admin.layout.admin_layout')
- @section('title')
+@extends('admin.layout.admin_layout')
+@section('title')
   Trangchu-Admin
 @endsection
  @section('content')

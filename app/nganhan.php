@@ -10,4 +10,5 @@ class nganhan extends Model
     public function daihan(){
         return $this->belongsTo('App\daihan');
     }
+    public $timestamps = false;
 }

@@ -16,7 +16,8 @@ class daihan extends Model
     }
 
     public function nganhan(){
-        return $this->hasMany('App\nganhan', 'id');
+        return $this->hasMany('App\nganhan', 'ma_tc');
     }
+    public $timestamps = false;
 
 }

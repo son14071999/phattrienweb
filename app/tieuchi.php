@@ -11,6 +11,8 @@ class tieuchi extends Model
         return $this->hasMany('App\daihan', 'id');
     }
     public function donvi(){
-        return $this->belongsTo('App\donvi');
+        return $this->belongsTo('App\donvi', 'ma_dv');
     }
+
+    public $timestamps = false;
 }
