@@ -28,3 +28,9 @@ Route::get('thong-ke', 'ControllerTieuchi@getThongke')->name('thongke');
 
 Route::post('tieu-chi','ControllerTieuchi@getLoc')->name('loc');
 Route::post('search','ControllerTieuchi@getSearch')->name('search');
+
+
+
+
+$ManagerAdminController = 'ManagerAdminController@';
+Route::get("/admin/index", $ManagerAdminController.'index');
