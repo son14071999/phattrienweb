@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Session;
+session_start();
 class ControllerAccount extends Controller
 {
     function getLogin(Request $request)
@@ -24,6 +26,7 @@ class ControllerAccount extends Controller
 
         if(Auth::attempt(['email'=>$request->email,'password'=>$request->password]))
         {
+            $request->session()->put('admin', 12312);
             return redirect()->route('index');
         }
         else{
@@ -32,8 +35,9 @@ class ControllerAccount extends Controller
 
     }
 
-    function logout(){
+    function logout(Request $request){
         Auth::logout();
+        $request->session()->forget('admin');
         return redirect()->route('index');
     }
 }

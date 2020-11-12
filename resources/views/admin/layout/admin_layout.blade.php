@@ -52,10 +52,14 @@
            
            
             
-            <img src="" alt="">
+            <img src="{{ asset('admin/assets/images/hinhanhbandau.jpg')}}" alt="" style="border-radius:50%">
             
              <!-- <span class="username username-hide-on-mobile"> {} Auth::user()->name </span>              -->
-             <span class="username username-hide-on-mobile"> Admin</span>             
+             <span class="username username-hide-on-mobile">
+             @if(Auth::user())
+              {{Auth::user()->name}}
+              @endif
+              </span>             
              <i class="fa fa-angle-down"></i> </a>
             <ul class="dropdown-menu dropdown-menu-default">
               

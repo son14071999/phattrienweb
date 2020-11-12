@@ -10,5 +10,9 @@ class nganhan extends Model
     public function daihan(){
         return $this->belongsTo('App\daihan');
     }
+
+    public function tcdaihan(){
+        return $this->belongsTo('App\daihan','ma_tc');
+    }
     public $timestamps = false;
 }

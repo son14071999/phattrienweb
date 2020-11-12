@@ -29,7 +29,7 @@ Sửa Tiêu Chí
               <div class="form-group row">
                 <label class="col-sm-2 control-label">Tên Tiêu chí</label>
                 <div class="col-sm-10">
-                  <input placeholder="Tên tiêu chí" class="form-control" type="text" name="tentieuchi" value="{{$tieuchi->ten}}">
+                  <input class="form-control" type="text" name="tentc" value="{{$tieuchi->ten}}">
                 </div>
               </div>
 
@@ -93,13 +93,14 @@ Sửa Tiêu Chí
               @endfor
              
 
-
+              @if(Auth::user()->rule == 1)
               <hr>
                 
                   <div class="form-group row">
                       <label class="col-sm-2 control-label">Trường</label>
                          <div class="col-sm-10">
                             <select  name="truong"  class="custom-select">
+                           
                             @foreach($truong as $sch)
                               @if($sch->id == $daihan->ma_truong)
                               <option value="{{$sch->id}}" selected >{{$sch->ten}}</option>
@@ -111,6 +112,7 @@ Sửa Tiêu Chí
                             </select>
                       </div>
                     </div>
+                  @endif
 
 
                     <hr>
@@ -151,7 +153,7 @@ Sửa Tiêu Chí
               <div class="pull-right">
                 
               </div>
-              <div> <strong>Copyright</strong> Admin &copy; 2019 </div>
+              <div> <strong>Copyright</strong> Admin &copy; 2020 </div>
             </div>
   </div>
 </div>

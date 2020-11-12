@@ -18,6 +18,10 @@ class daihan extends Model
     public function nganhan(){
         return $this->hasMany('App\nganhan', 'ma_tc');
     }
+
+    public function tieuchidh(){
+        return $this->belongsTo('App\tieuchi','ma_tc','id');
+    }
     public $timestamps = false;
 
 }

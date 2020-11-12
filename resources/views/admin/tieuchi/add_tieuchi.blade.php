@@ -92,7 +92,7 @@ Thêm Tiêu Chí
               @endfor
              
 
-
+              @if(Auth::user()->rule == 1)
               <hr>
                 
                   <div class="form-group row">
@@ -107,7 +107,7 @@ Thêm Tiêu Chí
                             </select>
                       </div>
                     </div>
-
+                @endif
 
                     <hr>
                   <div class="form-group row">
@@ -143,7 +143,7 @@ Thêm Tiêu Chí
               <div class="pull-right">
                 
               </div>
-              <div> <strong>Copyright</strong> Admin &copy; 2019 </div>
+              <div> <strong>Copyright</strong> Admin &copy; 2020 </div>
             </div>
   </div>
 </div>

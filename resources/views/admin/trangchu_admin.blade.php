@@ -68,7 +68,7 @@
                   <div class="pull-right">
                    
                   </div>
-                  <div> <strong>Copyright</strong> Ademin &copy; 2019 </div>
+                  <div> <strong>Copyright</strong> Ademin &copy; 2020 </div>
                 </div>
         </div>
       </div>

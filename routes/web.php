@@ -38,4 +38,4 @@ Route::get("/admin/index", $ManagerAdminController.'index');
 $ManagerAdminTieuChiController = 'ManagerAdminTieuChiController';
 Route::resource("/admin/tieuchi", $ManagerAdminTieuChiController);
 Route::get("/admin/showtc/{id}/{id1}", 'ManagerAdminTieuChiController@showTC');
-Route::put("/admin/updatetc/{id}/{id1}", 'ManagerAdminTieuChiController@updateTC');
+Route::put("/admin/updatetc/{id_tc}/{id1}", 'ManagerAdminTieuChiController@updateTC');
