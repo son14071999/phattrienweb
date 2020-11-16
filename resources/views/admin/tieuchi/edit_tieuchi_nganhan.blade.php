@@ -29,7 +29,7 @@ Cập nhật tiến độ công việc
               <div class="form-group row">
                 <label class="col-sm-2 control-label">Hoàn thành</label>
                 <div class="col-sm-10">
-                  <input placeholder="hoàn thành" class="form-control" type="text" name="hoanthanh" value="{{$hoanthanh}}">
+                  <input placeholder="hoàn thành" class="form-control" type="number" name="hoanthanh" value="{{$hoanthanh}}">
                 </div>
               </div>
               

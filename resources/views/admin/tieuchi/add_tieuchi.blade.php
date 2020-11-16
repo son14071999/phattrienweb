@@ -49,7 +49,7 @@ Thêm Tiêu Chí
               <div class="form-group row">
                 <label class="col-sm-2 control-label">Năm</label>
                 <div class="col-sm-10">
-                  <input placeholder="nam" class="form-control" type="text" name="nam" value="0">
+                  <input placeholder="nam" class="form-control" type="number" name="nam" value="0">
                 </div>
               </div>
             
@@ -58,7 +58,7 @@ Thêm Tiêu Chí
               <div class="form-group row">
                 <label class="col-sm-2 control-label">Mục tiêu</label>
                 <div class="col-sm-10">
-                  <input placeholder="muctieu" class="form-control" type="text" name="muctieu" value="0">
+                  <input placeholder="muctieu" class="form-control" type="number" name="muctieu" value="0">
                 </div>
               </div>
 
@@ -66,7 +66,7 @@ Thêm Tiêu Chí
               <div class="form-group row">
                 <label class="col-sm-2 control-label">Hoàn Thành</label>
                 <div class="col-sm-10">
-                  <input placeholder="hoanthanh" class="form-control" type="text" name="hoanthanh" value="0">
+                  <input placeholder="hoanthanh" class="form-control" type="number" name="hoanthanh" value="0">
                 </div>
               </div>
 
@@ -76,7 +76,7 @@ Thêm Tiêu Chí
               <div class="form-group row">
                 <label class="col-sm-2 control-label">Mục tiêu năm {{$i+1}}</label>
                 <div class="col-sm-10">
-                  <input placeholder="muctieu" class="form-control" type="text" name="muctieunam{{$i+1}}" value="0">
+                  <input placeholder="muctieu" class="form-control" type="number" name="muctieunam{{$i+1}}" value="0">
                 </div>
               </div>
 
@@ -84,7 +84,7 @@ Thêm Tiêu Chí
               <div class="form-group row">
                 <label class="col-sm-2 control-label">Hoàn Thành</label>
                 <div class="col-sm-10">
-                  <input placeholder="hoanthanh" class="form-control" type="text" name="hoanthanhnam{{$i+1}}" value="0">
+                  <input placeholder="hoanthanh" class="form-control" type="number" name="hoanthanhnam{{$i+1}}" value="0">
                 </div>
               </div>
 

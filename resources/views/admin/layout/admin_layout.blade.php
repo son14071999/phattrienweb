@@ -99,16 +99,19 @@
               </li>
             </ul>
           </li>
-         
+          @if(Auth::user()->rule == 1)
           <li class="nav-item">
-            <a class="nav-link nav-toggle" href="javascript:;"> <i class="fa fa-table"></i> <span class="title">Bảng xếp hạng</span> <span class="arrow"></span> </a>
+            <a class="nav-link nav-toggle" href="javascript:;"> <i class="fa fa-book"></i> <span class="title">Tài khoản</span> <span class="arrow"></span> </a>
             <ul class="sub-menu">
-              
+            <li class="nav-item">
+                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/account/create') }}"> <span class="title">Thêm tài khoản</span> </a>
+              </li>
               <li class="nav-item">
-                <a class="nav-link nav-toggle" href="{{ URL::to('/bang-xep-hang') }}"> <span class="title">Bảng xếp hạng điểm</span> </a>
+                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/account') }}"> <span class="title">Danh sách tài khoản</span> </a>
               </li>
             </ul>
           </li>
+          @endif
         </ul>
       </div>
     </div>

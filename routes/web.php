@@ -39,3 +39,5 @@ $ManagerAdminTieuChiController = 'ManagerAdminTieuChiController';
 Route::resource("/admin/tieuchi", $ManagerAdminTieuChiController);
 Route::get("/admin/showtc/{id}/{id1}", 'ManagerAdminTieuChiController@showTC');
 Route::put("/admin/updatetc/{id_tc}/{id1}", 'ManagerAdminTieuChiController@updateTC');
+
+Route::resource("/admin/account", 'ManagerAdminAccountController');
