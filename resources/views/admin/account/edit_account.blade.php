@@ -23,6 +23,7 @@ Sửa tài khoản
           <div class="widgets-container">
             <h5>Sửa tài khoản</h5>
             <hr>
+            @include('admin.error')
             <form action="{{ URL::to('/admin/account'.'/'.$account->id) }}" class="themtieuchi" method="POST" enctype="multipart/form-data">
               {{ csrf_field() }}
               {{method_field('PUT')}}

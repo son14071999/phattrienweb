@@ -22,7 +22,9 @@ Thêm tài khoản
         <div class="col-lg-12 mt-md-2  mb-md-2">
           <div class="widgets-container">
             <h5>Thêm tài khoản</h5>
-            <hr>
+            
+            @include('admin.error')
+        <hr>
             <form action="{{ URL::to('/admin/account') }}" class="themtieuchi" method="POST" enctype="multipart/form-data">
               {{ csrf_field() }}
               <div class="form-group row">
@@ -83,19 +85,15 @@ Thêm tài khoản
               <button class="buttonxxx" name="themtaikhoan" style="color: white; text-align: center">Thêm Tài Khoản </button>
 
             </form>
+            <hr>
+             
           </div>
         </div>
+        
        
       </div>
     </div> 
-    
-     <div class="footer">
-              <div class="pull-right">
-                
-              </div>
-              <div> <strong>Copyright</strong> Admin &copy; 2020 </div>
-            </div>
-  </div>
+   
 </div>
 
 @endsection

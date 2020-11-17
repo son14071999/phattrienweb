@@ -117,6 +117,9 @@
     </div>
 
    @yield('content')
+
+
+ 
   
   <!-- Go top -->
   <a href="#" class="scrollup"><i class="fa fa-chevron-up"></i></a>

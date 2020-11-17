@@ -22,7 +22,9 @@ Sửa Tiêu Chí
         <div class="col-lg-12 mt-md-2  mb-md-2">
           <div class="widgets-container">
             <h5>Sửa tiêu chí</h5>
+            @include('admin.error')
             <hr>
+            
             <form action="{{ URL::to('/admin/updatetc'.'/'.$tieuchi->id.'/'.$daihan->id) }}" class="themtieuchi" method="POST" enctype="multipart/form-data">
               {{ csrf_field() }}
               {{method_field('PUT')}}

@@ -89,6 +89,50 @@ class ManagerAdminTieuChiController extends Controller
     public function store(Request $request)
     { 
         $this->AuthLogin();
+
+        $validateData = $request->validate([
+            'tentieuchi' => 'required|min:2',
+            'motatieuchi' => 'required|min:2',
+            'nam' => 'required|numeric|min:1000',
+            'hoanthanh' => 'required|numeric|min:0',
+            'muctieu' => 'required|numeric|min:0',
+            'hoanthanhnam1' => 'required|numeric|min:0',
+            'muctieunam1' => 'required|numeric|min:0',
+            'hoanthanhnam2' => 'required|numeric|min:0',
+            'muctieunam2' => 'required|numeric|min:0',
+            'hoanthanhnam3' => 'required|numeric|min:0',
+            'muctieunam3' => 'required|numeric|min:0',
+            'hoanthanhnam4' => 'required|numeric|min:0',
+            'muctieunam4' => 'required|numeric|min:0',
+            'hoanthanhnam5' => 'required|numeric|min:0',
+            'muctieunam5' => 'required|numeric|min:0',
+
+
+        ],
+        [
+            'tentieuchi.required' => 'Vui lòng nhập tên tiêu chí',
+            'motatieuchi.required' => 'Vui lòng nhập mô tả tiêu chí',
+            'tentieuchi.min' => 'Tên tiêu chí phải có độ dài tối thiểu lớn hơn 2',
+            'motatieuchi.min' => 'Mô tả tiêu chí phải có độ dài tối thiểu lớn hơn 2',
+            'nam.min' => 'Năm phải lớn hơn 1000',
+            'hoanthanh.min' => 'Hoàn thành tối thiểu là 0',
+            'muctieu.min' => 'Mục tiêu tối thiểu là 0',
+            'hoanthanhnam1.min' => 'Hoàn thành năm 1 tối thiểu là 0',
+            'muctieunam1.min' => 'Mục tiêu năm 1 tối thiểu là 0',
+            'hoanthanhnam2.min' => 'Hoàn thành năm 2 tối thiểu là 0',
+            'muctieunam2.min' => 'Mục tiêu năm 2 tối thiểu là 0',
+            'hoanthanhnam3.min' => 'Hoàn thành năm 3 tối thiểu là 0',
+            'muctieunam3.min' => 'Mục tiêu năm 3 tối thiểu là 0',
+            'hoanthanhnam4.min' => 'Hoàn thành năm 4 tối thiểu là 0',
+            'muctieunam4.min' => 'Mục tiêu năm 4 tối thiểu là 0',
+            'hoanthanhnam5.min' => 'Hoàn thành năm 5 tối thiểu là 0',
+            'muctieunam5.min' => 'Mục tiêu năm 5 tối thiểu là 0',
+
+        ]
+            
+        );
+
+
         $id = Auth::user()->rule;
         $truong = Auth::user()->ma_truong;
         $tieuchi = new tieuchi();
@@ -164,6 +208,50 @@ class ManagerAdminTieuChiController extends Controller
     public function updateTC(Request $request, $id_tc, $id1)
     {
         $this->AuthLogin();
+
+        $validateData = $request->validate([
+            'tentc' => 'required|min:2',
+            'motatieuchi' => 'required|min:2',
+            'nam' => 'required|numeric|min:1000',
+            'hoanthanh' => 'required|numeric|min:0',
+            'muctieu' => 'required|numeric|min:0',
+            'hoanthanhnam1' => 'required|numeric|min:0',
+            'muctieunam1' => 'required|numeric|min:0',
+            'hoanthanhnam2' => 'required|numeric|min:0',
+            'muctieunam2' => 'required|numeric|min:0',
+            'hoanthanhnam3' => 'required|numeric|min:0',
+            'muctieunam3' => 'required|numeric|min:0',
+            'hoanthanhnam4' => 'required|numeric|min:0',
+            'muctieunam4' => 'required|numeric|min:0',
+            'hoanthanhnam5' => 'required|numeric|min:0',
+            'muctieunam5' => 'required|numeric|min:0',
+
+
+        ],
+        [
+            'tentc.required' => 'Vui lòng nhập tên tiêu chí',
+            'motatieuchi.required' => 'Vui lòng nhập mô tả tiêu chí',
+            'tentieuchi.min' => 'Tên tiêu chí phải có độ dài tối thiểu lớn hơn 2',
+            'motatieuchi.min' => 'Mô tả tiêu chí phải có độ dài tối thiểu lớn hơn 2',
+            'nam.min' => 'Năm phải lớn hơn 1000',
+            'hoanthanh.min' => 'Hoàn thành tối thiểu là 0',
+            'muctieu.min' => 'Mục tiêu tối thiểu là 0',
+            'hoanthanhnam1.min' => 'Hoàn thành năm 1 tối thiểu là 0',
+            'muctieunam1.min' => 'Mục tiêu năm 1 tối thiểu là 0',
+            'hoanthanhnam2.min' => 'Hoàn thành năm 2 tối thiểu là 0',
+            'muctieunam2.min' => 'Mục tiêu năm 2 tối thiểu là 0',
+            'hoanthanhnam3.min' => 'Hoàn thành năm 3 tối thiểu là 0',
+            'muctieunam3.min' => 'Mục tiêu năm 3 tối thiểu là 0',
+            'hoanthanhnam4.min' => 'Hoàn thành năm 4 tối thiểu là 0',
+            'muctieunam4.min' => 'Mục tiêu năm 4 tối thiểu là 0',
+            'hoanthanhnam5.min' => 'Hoàn thành năm 5 tối thiểu là 0',
+            'muctieunam5.min' => 'Mục tiêu năm 5 tối thiểu là 0',
+
+        ]
+            
+        );
+
+
         $id = Auth::user()->rule;
         $truong = Auth::user()->ma_truong;
         $tieuchi = tieuchi::find($id_tc);
@@ -234,6 +322,21 @@ class ManagerAdminTieuChiController extends Controller
     public function update(Request $request, $id)
     {    
         $this->AuthLogin();
+
+        $validateData = $request->validate([
+           
+            'hoanthanh' => 'required|numeric|min:0',
+        
+
+
+        ],
+        [
+            
+            'hoanthanh.min' => 'Hoàn thành tối thiểu là 0',
+        
+        ]
+            
+        );
         $nganhan = nganhan::find($id);
         $id = $nganhan->tcdaihan->id;
         $nganhan->xong = $request->hoanthanh;
