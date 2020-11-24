@@ -30,7 +30,7 @@
                                 <button><span>{{Auth::user()->name}}/</span></button>
                                 <a href="{{route('logout')}}"><span>Logout</span></a>
                         @else
-                            <a href="{{route('getLogin')}}" class="btn-login"><span>Đăng nhập</span></a>
+                            <a href="{{route('getLogin')}}" class="btn-login">Đăng nhập</a>
                         @endif
 
                     </div>

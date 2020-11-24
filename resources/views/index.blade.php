@@ -18,18 +18,25 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/cssContent.css')}}">
     <link rel="stylesheet" href="{{asset('css/cssFooter.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/cssBody.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/cssDonvitructhuoc.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/cssTintuc.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/bodyChitieu.css')}}" type="text/css">
 
 
 </head>
 <div class="container-fluid bg-secondary">
     @include('block.header')
 {{--    @include('block.body')--}}
+
     @yield('slibar')
+    @yield('donvitructhuoc')
+    @yield('bodychitieu')
+    @yield('tintuc')
         <div id="content">
             @yield('content')
         </div>
 {{--    @include('block.donvitructhuoc')--}}
-    @yield('donvitructhuoc')
+
     @include('block.footer')
 </div>
 

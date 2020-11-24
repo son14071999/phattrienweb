@@ -20,11 +20,42 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c17d8374-292d-4552-a5f5-6e176cfa9731" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/css/bodyChitieu.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/cssDonvitructhuoc.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/cssTintuc.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/block/bodychitieu.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/block/tintuc.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ControllerTieuchi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ControllerTieuchi.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/cssBody.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/cssBody.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/cssContent.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/cssContent.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/cssLogin.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/cssLogin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/Nha_dieu_hanh_144_Xuan_Thuy_26.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/cong_nghe_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/dhkhtn.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/dhqg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/dhtn2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/hus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/khoa_luat_logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/khoa_quoc_te_logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/kinh_te_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/ngoai_ngu_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/nhan_van_logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/nhanvan.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slide-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slide-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/slide-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/tu_nhien_logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/ussh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/images/y_duoc_logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/block/body.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/block/body.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/block/donvitructhuoc.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/block/donvitructhuoc.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/block/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/block/footer.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/block/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/block/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/homePage.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/homePage.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/login.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,6 +244,9 @@
       <workItem from="1604710887021" duration="1800000" />
       <workItem from="1604713685060" duration="724000" />
       <workItem from="1604715003646" duration="309000" />
+      <workItem from="1605952048092" duration="13823000" />
+      <workItem from="1605981779073" duration="9067000" />
+      <workItem from="1606037420653" duration="26737000" />
     </task>
     <servers />
   </component>
@@ -248,17 +282,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1604714224514" />
-    <state x="478" y="145" width="579" height="534" key="find.popup" timestamp="1604689677675">
+    <state x="777" y="228" width="579" height="596" key="find.popup" timestamp="1606075030700">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="478" y="145" width="579" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1604689677675" />
+    <state x="777" y="228" width="579" height="596" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1606075030700" />
     <state x="864" y="216" key="run.anything.popup" timestamp="1604685200737">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="864" y="216" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1604685200737" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1604652058323">
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1606068173197">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1604652058323" />
+    <state x="430" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1606068173197" />
   </component>
 </project>

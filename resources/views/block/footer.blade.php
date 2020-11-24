@@ -20,7 +20,7 @@
 
     <div class="row footer-2">
         <div class="col-sm-12">
-            @Nhóm 7: 10
+
         </div>
 
     </div>

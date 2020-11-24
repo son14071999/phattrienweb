@@ -1,0 +1,29 @@
+.carousel-indicators li {
+    text-indent: 0px;
+    text-align: center;
+    color: red;
+    margin: 0 2px;
+    width: 25px;
+    height: 2px;
+    border: none;
+    border-radius: 10%;
+    line-height: 30px;
+    /*background-color: #eae3cb;*/
+    transition: all 0.25s ease;
+}
+.carousel-indicators .active, .hover {
+    margin: 0 2px;
+    width: 22px;
+    height: 2px;
+    /*background-color: #f5e5e7;*/
+}
+.carousel-control-prev-icon {
+    background-image: url("../images/left-arrow.png");
+    width: 32px;
+    height: 32px;
+}
+.carousel-control-next-icon {
+    background-image: url("../images/right-arrow.png");
+    width: 32px;
+    height: 32px;
+}

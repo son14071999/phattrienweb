@@ -151,7 +151,7 @@ class ControllerTieuchi extends Controller
             $hoanThanh[$index] = $hoanThanh[$index] + $nh->xong;
             $tong[$index] = $tong[$index] + $nh->tong;
         }
-        return view('chart', compact('arr','nam','hoanThanh','tong'));
+        return view('chart', compact('nam','hoanThanh','tong'));
     }
 
 
