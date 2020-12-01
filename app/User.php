@@ -37,4 +37,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+     public function truongt(){
+        return $this->hasOne('App\truong','id','ma_truong');
+    }
 }

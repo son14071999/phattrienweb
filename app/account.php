@@ -10,4 +10,7 @@ class account extends Model
     public function truong(){
         return $this->belongsTo('App\truong');
     }
+
+
+    public $timestamps = false;
 }
