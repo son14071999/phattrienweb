@@ -52,6 +52,7 @@
 #menu{
     z-index: 3;
 }
+<<<<<<< HEAD
 
 
 .dropdown-content {
@@ -69,4 +70,17 @@
     color: black;
     padding: 2px 35px 2px 15px;
     text-decoration: none;
+=======
+.account-success{
+    float: left;
+    font-size: 15px;
+    margin-left: 15px;
+    margin-top: 15px;
+    color: #0aa13d;
+}
+.account-logout{
+    font-size: 15px;
+    margin-left: 20px;
+    color: #0aa13d;
+>>>>>>> 3c37ee12a9b36e1f7e488e88dab4a90bdeaccd60
 }
