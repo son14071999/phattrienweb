@@ -24,7 +24,7 @@ Route::get('gioi-thieu', 'ControllerGioithieu@getGioithieu')->name('gioithieu');
 Route::get('login', 'ControllerAccount@getLogin')->name('getLogin');
 Route::post('login', 'ControllerAccount@postLogin')->name('postLogin');
 Route::get('logout', 'ControllerAccount@logout')->name('logout');
-Route::get('thong-ke', 'ControllerTieuchi@getThongke')->name('thongke');
+//Route::get('thong-ke', 'ControllerTieuchi@getThongke')->name('thongke');
 
 Route::post('tieu-chi','ControllerTieuchi@getLoc')->name('loc');
 Route::post('search','ControllerTieuchi@getSearch')->name('search');
@@ -32,7 +32,9 @@ Route::post('search','ControllerTieuchi@getSearch')->name('search');
 
 
 
-Route::get('thongke', 'ControllerTieuchi@demoThongKe')->name('thongke1');
+
+
+Route::get('thongke', 'ControllerTieuchi@demoThongKe')->name('thongke');
 Route::post('thongkep', 'ControllerTieuchi@postThongKe')->name('postthongke');
 Route::post('getnamthongke', 'ControllerTieuchi@getnamthongke')->name('getnamthongke');
 Route::post('gettruongthongke', 'ControllerTieuchi@gettruongthongke')->name('gettruongthongke');
@@ -46,6 +48,8 @@ Route::get("/admin/showtc/{id}/{id1}", 'ManagerAdminTieuChiController@showTC');
 Route::put("/admin/updatetc/{id_tc}/{id1}", 'ManagerAdminTieuChiController@updateTC');
 
 Route::resource("/admin/account", 'ManagerAdminAccountController');
+
+
 
 
 

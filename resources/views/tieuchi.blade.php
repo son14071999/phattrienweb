@@ -73,6 +73,7 @@
             <th>Tổng</th>
             <th>Đơn vị</th>
             <th>Trường</th>
+            <th>Kết quả</th>
         </tr>
         </thead>
         <tbody>
@@ -85,6 +86,11 @@
                 <td>{{$daihan[$i]->tong}}</td>
                 <td>{{$daihan[$i]->don_vi}}</td>
                 <td>{{$daihan[$i]->ma_truong}}</td>
+                @if($daihan[$i]->xong/$daihan[$i]->tong <=0.8)
+                    <td><input type="checkbox" disabled ></td>
+                @else
+                    <td><input type="checkbox" disabled checked style="background: #0c5460"></td>
+                @endif
             </tr>
         @endfor
 

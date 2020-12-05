@@ -57,9 +57,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('thongke')}}">Thống kê</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Tin tức</a>
-                </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a class="nav-link" href="{{route('tintuc')}}">Tin tức</a>--}}
+{{--                </li>--}}
                 <li class="nav-item">
                     <a class="nav-link " href="#">Liên hệ</a>
                 </li>
