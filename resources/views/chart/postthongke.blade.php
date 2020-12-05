@@ -1,51 +1,66 @@
 @extends('index')
 @section('content')
-
-<div class="container-chart" style="display: flex;">
+<div class="container-chart" >
     <form action="{{route('postthongke')}} " method="POST">
         @csrf
-        <div class="form-group">
-            <label>Truong A</label>
-            <select name="truonga" id="truonga">
-                <option value="-1" selected>all</option>
-                @foreach($truong as $tr)
-
-                <option value="{{$tr->id}}">{{$tr->ten}}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
-            <label>Truong b</label>
-            <select name="truongb" id="truonga">
-                <option value="-1" selected>all</option>
-                @foreach($truong as $tr)
-
-                <option value="{{$tr->id}}">{{$tr->ten}}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="form-group">
-            <label>tieu chi</label>
+        <div class="form-group-chart">
+           
             <select name="tieuchi" id="tieuchi">
+                <option value="-2" class="opt-hidden"></option>
                 @foreach($tieuchi as $tc)
                 <option value="{{$tc->id}}">{{$tc->ten}}</option>
                 @endforeach
             </select>
+            <label id="lbl-tc">Tiêu chí</label>
         </div>
-        <div class="form-group">
-            <label>nam</label>
-            <select name="nam" id="nam">
+        <div class="form-group-chart">
+            
+            <select name="truonga" id="truonga">
+            <option value="-2" class="opt-hidden1"></option>
+                <option value="-1" >all</option>
+                @foreach($truong as $tr)
 
-                @for ($i = 2020; $i < 2036; $i++) <option value="{{$i}}">{{$i}}</option>
+                <option value="{{$tr->id}}">{{$tr->ten}}</option>
+                @endforeach
+            </select>
+            <label id="lbl-truonga">Trường 1</label>
+        </div>
+        <div class="form-group-chart">
+            
+            <select name="truongb" id="truongb">
+            <option value="-2" class="opt-hidden2"></option>
+                <option value="-1" >all</option>
+                @foreach($truong as $tr)
+
+                <option value="{{$tr->id}}">{{$tr->ten}}</option>
+                @endforeach
+            </select>
+            <label id="lbl-truongb">Trường 2</label>
+        </div>
+        
+        <div class="form-group-chart">
+            
+            <select name="nam" id="nam">
+                <option value="" class="opt-hidden3"></option>
+                @for ($i = 2020; $i < 2030; $i++) <option value="{{$i}}">{{$i}}</option>
                     @endfor
             </select>
+            <label id="lbl-nam">Năm</label>
         </div>
-        <button id="chon">chon</button>
+
+        <div class="form-group-chart">
+            
+            <input type="text"  name="nhieunam" id="nhieunam">
+            <label id="lbl-nhieunam">2020-2029</label>
+        </div>
+        
+        <button id="chon">Chọn</button>
     </form>
 
 </div>
-<canvas id="myChart" width="400" height="150"></canvas>
-<p style="text-align:center; font-size: 2em" id="tenbd"></p>
+
+<canvas id="myChart" width="400" height="150" style="margin-top: 20px; margin-bottom: 2rem;"></canvas>
+<!-- <p style="text-align:center; font-size: 2em" id="tenbd"></p> -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 <script type="text/javascript">
     label = []
@@ -64,6 +79,11 @@
     console.log(aDatasets2)    
     console.log(aDatasets3)    
 
+    nam = '{{$nam}}';
+    if('{{$trongnhieunam}}' !== ""){
+        nam = '{{$trongnhieunam}}';
+    }
+    
     
 
     
@@ -81,7 +101,7 @@
                 labels: label,
 
                 datasets: [{
-                    label: 'tong cong',
+                    label: 'Tổng cộng',
                     fill: false,
                     data: aDatasets1,
                     backgroundColor: '#E91E63',
@@ -94,7 +114,7 @@
                 },
 
                 {
-                    label: 'tong',
+                    label: 'Tổng trong năm',
                     fill: false,
                     data: aDatasets2,
                     backgroundColor:
@@ -108,7 +128,7 @@
                     borderWidth: 1
                 },
                 {
-                    label: 'xong',
+                    label: 'Hoàn thành',
                     fill: false,
                     data: aDatasets3,
                     backgroundColor:
@@ -136,7 +156,7 @@
                 },
                 title: {
                     display: true,
-                    text: 'Biểu đồ: Thống kê kế hoạch hoàn thành chỉ tiêu' + '{{$tentc}}' +' nam ' + '{{$nam}}'
+                    text: 'Biểu đồ: Thống kê kế hoạch hoàn thành chỉ tiêu : ' + '{{$tentc}}' +' năm ' + nam
                 },
                 responsive: true,
 
@@ -159,7 +179,7 @@
                 }
             }
         });
-        document.querySelector('#tenbd').innerHTML = "Biểu đồ: Thống kê kế hoạch hoàn thành chỉ tiêu";
+        // document.querySelector('#tenbd').innerHTML = "Biểu đồ: Thống kê kế hoạch hoàn thành chỉ tiêu";
       
   
 
@@ -198,4 +218,6 @@
 
 
 </script>
+
+
 @endsection

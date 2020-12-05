@@ -34,7 +34,9 @@ Route::post('search','ControllerTieuchi@getSearch')->name('search');
 
 Route::get('thongke', 'ControllerTieuchi@demoThongKe')->name('thongke1');
 Route::post('thongkep', 'ControllerTieuchi@postThongKe')->name('postthongke');
-Route::get('getnamthongke', 'ControllerTieuchi@getnamthongke')->name('getnamthongke');
+Route::post('getnamthongke', 'ControllerTieuchi@getnamthongke')->name('getnamthongke');
+Route::post('gettruongthongke', 'ControllerTieuchi@gettruongthongke')->name('gettruongthongke');
+Route::get('test1234', 'ControllerTieuchi@test1234')->name('test1234');
 $ManagerAdminController = 'ManagerAdminController@';
 Route::get("/admin/index", $ManagerAdminController.'index');
 
@@ -44,3 +46,7 @@ Route::get("/admin/showtc/{id}/{id1}", 'ManagerAdminTieuChiController@showTC');
 Route::put("/admin/updatetc/{id_tc}/{id1}", 'ManagerAdminTieuChiController@updateTC');
 
 Route::resource("/admin/account", 'ManagerAdminAccountController');
+
+
+
+

@@ -172,6 +172,10 @@ class ControllerTieuchi extends Controller
         $hoanthanhnganhan = array();
         $truongduocchon = array();
         $nam = $request->nam;
+        $trongnhieunam = $request->nhieunam;
+        if(empty($trongnhieunam)){
+            $trongnhieunam = "";
+        }
         $idtieuchicantim  = $request->tieuchi;
         $daihanall = tieuchi::find($idtieuchicantim)->daihan1234;
        
@@ -180,70 +184,182 @@ class ControllerTieuchi extends Controller
         // $tieuchidaihan = $daihanall->where('ma_truong','hus')->first();
         // $tieuchinganhantheonam = $tieuchidaihan->nganhan1->where('nam','=',$nam)->first();
         // return $tieuchinganhantheonam;
-       
-        if(($truonga==$truongb) && ($truonga==-1||$truongb==-1)){
-            $idtruongduocchon = array();
-            foreach($truong as $tr){
-                array_push($truongduocchon, $tr->ten);
-                array_push($idtruongduocchon, $tr->id);
+
+        if($trongnhieunam != ""){
+            $arrNhieuNam = preg_split("/\-/",$trongnhieunam);
+            $nam1 = (int) $arrNhieuNam[0];
+            $nam2 = (int) $arrNhieuNam[1];
+            if (($nam1 < 2000) || ($nam2 < 2000) || $nam2 < $nam1) {
+                return "nhap lai dung theo khoang trong goi y";
+            } else {
+                if(($truonga==$truongb) && ($truonga==-1||$truongb==-1)){
+                    $idtruongduocchon = array();
+                    foreach($truong as $tr){
+                        array_push($truongduocchon, $tr->ten);
+                        array_push($idtruongduocchon, $tr->id);
+                    }
+                    
+                    foreach($idtruongduocchon as $id){
+                        $tieuchidaihan = $daihanall->where('ma_truong',$id)->first();
+                        array_push($tongdaihan,  $tieuchidaihan->tong);
+                        
+                        $tongctnganhantheonam = 0;
+                        $xongctnganhantheonam = 0;
+                        for($i = $nam1; $i<=$nam2; $i++){
+                            $tieuchinganhantheonam = $tieuchidaihan->nganhan1->where('nam','=',$i)->first();
+                            if(empty($tieuchinganhantheonam)) {
+                                return "khong co du lieu nhap nam khac hoac xem xet lai hoac nhap dung nam trong khoang goi y(khoang 5 nam), ";
+                            }
+                            $tongctnganhantheonam += $tieuchinganhantheonam->tong;
+                            $xongctnganhantheonam += $tieuchinganhantheonam->xong;
+                        }
+                        
+                        
+                        array_push($tongnganhan, $tongctnganhantheonam);
+                        array_push($hoanthanhnganhan, $xongctnganhantheonam);
+                    }
+                   
+                    return view('chart.postthongke', compact('truongduocchon','truong','tieuchi','tongdaihan','tongnganhan','hoanthanhnganhan', 'tentc','nam','trongnhieunam'));
+                }
+                elseif ($truongb==$truonga) {
+                    array_push($tongdaihan,$daihanall->where('ma_truong','=',$truonga)->first()->tong) ;
+                    $tongctnganhantheonam = 0;
+                    $xongctnganhantheonam = 0;
+                    for($i = $nam1; $i<=$nam2; $i++){
+                        $nganhantruonga =  $daihanall->where('ma_truong','=',$truonga)->first()->nganhan1->where('nam','=',$i)->first();
+                        if(empty($nganhantruonga)) {
+                            return "khong co du lieu nhap nam khac hoac xem xet lai hoac nhap dung nam trong khoang goi y(khoang 5 nam), ";
+                        }
+                        $tongctnganhantheonam += $nganhantruonga->tong;
+                        $xongctnganhantheonam += $nganhantruonga->xong;
+                    }
+                    //$nganhantruonga =  $daihanall->where('ma_truong','=',$truonga)->first()->nganhan1->where('nam','=',$nam)->first();
+                    array_push($tongnganhan, $tongctnganhantheonam);
+                    array_push($hoanthanhnganhan, $xongctnganhantheonam);
+                   
+                    
+                    array_push($truongduocchon, DB::table('truong')->where('truong.id','=', $truonga)->first()->ten);
+               
+                    
+                    return view('chart.postthongke', compact('truongduocchon','truong','tieuchi','tongdaihan','tongnganhan','hoanthanhnganhan', 'tentc','nam', 'trongnhieunam'));
+                    
+                }
+                array_push($tongdaihan,$daihanall->where('ma_truong','=',$truonga)->first()->tong) ;
+                array_push($tongdaihan,$daihanall->where('ma_truong','=',$truongb)->first()->tong) ;
+                $tongctnganhantheonamtruonga = 0;
+                $xongctnganhantheonamtruonga = 0;
+                $tongctnganhantheonamtruongb = 0;
+                $xongctnganhantheonamtruongb = 0;
+                for($i = $nam1; $i<=$nam2; $i++){
+                    $nganhantruonga =  $daihanall->where('ma_truong','=',$truonga)->first()->nganhan1->where('nam','=',$i)->first();
+                    $nganhantruongb =  $daihanall->where('ma_truong','=',$truongb)->first()->nganhan1->where('nam','=',$i)->first();
+                    if(empty($nganhantruonga) || empty($nganhantruongb)) {
+                        return "khong co du lieu nhap nam khac hoac xem xet lai hoac nhap dung nam trong khoang goi y(khoang 5 nam), ";
+                    }
+                    $tongctnganhantheonamtruonga += $nganhantruonga->tong;
+                    $xongctnganhantheonamtruonga += $nganhantruonga->xong;
+                    $tongctnganhantheonamtruongb += $nganhantruongb->tong;
+                    $xongctnganhantheonamtruongb += $nganhantruongb->xong;
+                }
+                    //$nganhantruonga =  $daihanall->where('ma_truong','=',$truonga)->first()->nganhan1->where('nam','=',$nam)->first();
+                
+
+                // $nganhantruonga =  $daihanall->where('ma_truong','=',$truonga)->first()->nganhan1->where('nam','=',$nam)->first();
+                // $nganhantruongb =  $daihanall->where('ma_truong','=',$truongb)->first()->nganhan1->where('nam','=',$nam)->first();
+                array_push($tongnganhan, $tongctnganhantheonamtruonga);
+                array_push($tongnganhan, $tongctnganhantheonamtruongb);
+                array_push($hoanthanhnganhan, $xongctnganhantheonamtruonga);
+                array_push($hoanthanhnganhan, $xongctnganhantheonamtruongb);
+                //foreach(DB::table('truong')->where('truong.id','=', $truonga)->get() as $tr) {
+                    array_push($truongduocchon, DB::table('truong')->where('truong.id','=', $truonga)->first()->ten);
+            // }
+                //foreach(DB::table('truong')->where('truong.id','=', $truongb)->get() as $tr) {
+                    array_push($truongduocchon, DB::table('truong')->where('truong.id','=', $truongb)->first()->ten);
+                //}
+                // array_push($truongduocchon, $truonga);
+                // array_push($truongduocchon, $truongb);
+                
+                
+                return view('chart.postthongke', compact('truongduocchon','truong','tieuchi','tongdaihan','tongnganhan','hoanthanhnganhan', 'tentc','nam','trongnhieunam')); 
+
+
+
             }
             
-            foreach($idtruongduocchon as $id){
-                $tieuchidaihan = $daihanall->where('ma_truong',$id)->first();
+        } else {
+
+            if(($truonga==$truongb) && ($truonga==-1||$truongb==-1)){
+                $idtruongduocchon = array();
+                foreach($truong as $tr){
+                    array_push($truongduocchon, $tr->ten);
+                    array_push($idtruongduocchon, $tr->id);
+                }
                 
-                $tieuchinganhantheonam = $tieuchidaihan->nganhan1->where('nam','=',$nam)->first();
-                array_push($tongdaihan,  $tieuchidaihan->tong);
-                array_push($tongnganhan, $tieuchinganhantheonam->tong);
-                array_push($hoanthanhnganhan, $tieuchinganhantheonam->xong);
+                foreach($idtruongduocchon as $id){
+                    $tieuchidaihan = $daihanall->where('ma_truong',$id)->first();
+                   
+                    $tieuchinganhantheonam = $tieuchidaihan->nganhan1->where('nam','=',$nam)->first();
+                    if(empty($tieuchinganhantheonam)) {
+                        return "khong co du lieu nhap nam khac hoac xem xet lai cac truong";
+                    }
+                   
+                    array_push($tongdaihan,  $tieuchidaihan->tong);
+                    array_push($tongnganhan, $tieuchinganhantheonam->tong);
+                    array_push($hoanthanhnganhan, $tieuchinganhantheonam->xong);
+
+                   
+                    
+                }
+               
+                return view('chart.postthongke', compact('truongduocchon','truong','tieuchi','tongdaihan','tongnganhan','hoanthanhnganhan', 'tentc','nam', 'trongnhieunam'));
             }
+            elseif ($truongb==$truonga) {
+                array_push($tongdaihan,$daihanall->where('ma_truong','=',$truonga)->first()->tong) ;
+                $nganhantruonga =  $daihanall->where('ma_truong','=',$truonga)->first()->nganhan1->where('nam','=',$nam)->first();
+                array_push($tongnganhan, $nganhantruonga->tong);
+               
+                array_push($hoanthanhnganhan, $nganhantruonga->xong);
+               
+                
+                    array_push($truongduocchon, DB::table('truong')->where('truong.id','=', $truonga)->first()->ten);
            
-            return view('chart.postthongke', compact('truongduocchon','truong','tieuchi','tongdaihan','tongnganhan','hoanthanhnganhan', 'tentc','nam'));
-        }
-        elseif ($truongb==$truonga) {
+                
+                return view('chart.postthongke', compact('truongduocchon','truong','tieuchi','tongdaihan','tongnganhan','hoanthanhnganhan', 'tentc','nam','trongnhieunam'));
+                
+            } 
+
+    
+            
+            
+                // if($dh->ma_truong==$truonga || $dh->ma_truong==$truongb) {
+                //     array_push($tongdaihan, $dh->xong);
+                // }
             array_push($tongdaihan,$daihanall->where('ma_truong','=',$truonga)->first()->tong) ;
+            array_push($tongdaihan,$daihanall->where('ma_truong','=',$truongb)->first()->tong) ;
             $nganhantruonga =  $daihanall->where('ma_truong','=',$truonga)->first()->nganhan1->where('nam','=',$nam)->first();
+            $nganhantruongb =  $daihanall->where('ma_truong','=',$truongb)->first()->nganhan1->where('nam','=',$nam)->first();
+            if(empty($nganhantruonga) || empty($nganhantruongb)) {
+                return "khong co du lieu nhap nam khac hoac xem xet lai hoac nhap nam khac ";
+            }
             array_push($tongnganhan, $nganhantruonga->tong);
-           
+            array_push($tongnganhan, $nganhantruongb->tong);
             array_push($hoanthanhnganhan, $nganhantruonga->xong);
-           
+            array_push($hoanthanhnganhan, $nganhantruongb->xong);
             //foreach(DB::table('truong')->where('truong.id','=', $truonga)->get() as $tr) {
                 array_push($truongduocchon, DB::table('truong')->where('truong.id','=', $truonga)->first()->ten);
-        // }
+           // }
             //foreach(DB::table('truong')->where('truong.id','=', $truongb)->get() as $tr) {
-                
+                array_push($truongduocchon, DB::table('truong')->where('truong.id','=', $truongb)->first()->ten);
             //}
             // array_push($truongduocchon, $truonga);
             // array_push($truongduocchon, $truongb);
             
             
-            return view('chart.postthongke', compact('truongduocchon','truong','tieuchi','tongdaihan','tongnganhan','hoanthanhnganhan', 'tentc','nam'));
-            
-        } 
+            return view('chart.postthongke', compact('truongduocchon','truong','tieuchi','tongdaihan','tongnganhan','hoanthanhnganhan', 'tentc','nam','trongnhieunam'));
 
+        }
+       
         
-        
-            // if($dh->ma_truong==$truonga || $dh->ma_truong==$truongb) {
-            //     array_push($tongdaihan, $dh->xong);
-            // }
-        array_push($tongdaihan,$daihanall->where('ma_truong','=',$truonga)->first()->tong) ;
-        array_push($tongdaihan,$daihanall->where('ma_truong','=',$truongb)->first()->tong) ;
-        $nganhantruonga =  $daihanall->where('ma_truong','=',$truonga)->first()->nganhan1->where('nam','=',$nam)->first();
-        $nganhantruongb =  $daihanall->where('ma_truong','=',$truongb)->first()->nganhan1->where('nam','=',$nam)->first();
-        array_push($tongnganhan, $nganhantruonga->tong);
-        array_push($tongnganhan, $nganhantruongb->tong);
-        array_push($hoanthanhnganhan, $nganhantruonga->xong);
-        array_push($hoanthanhnganhan, $nganhantruongb->xong);
-        //foreach(DB::table('truong')->where('truong.id','=', $truonga)->get() as $tr) {
-            array_push($truongduocchon, DB::table('truong')->where('truong.id','=', $truonga)->first()->ten);
-       // }
-        //foreach(DB::table('truong')->where('truong.id','=', $truongb)->get() as $tr) {
-            array_push($truongduocchon, DB::table('truong')->where('truong.id','=', $truongb)->first()->ten);
-        //}
-        // array_push($truongduocchon, $truonga);
-        // array_push($truongduocchon, $truongb);
-        
-        
-        return view('chart.postthongke', compact('truongduocchon','truong','tieuchi','tongdaihan','tongnganhan','hoanthanhnganhan', 'tentc','nam'));
         
        
         
@@ -251,10 +367,42 @@ class ControllerTieuchi extends Controller
     }
 
     public function getnamthongke(Request $request){
-      
+        $tieuchi  = tieuchi::find($request->id)->daihan1234;
+        $nam = array();
+        foreach($tieuchi as $tc) {
+            array_push($nam, $tc->nam);
+        }
+        sort($nam);
+       
+        
 
-        return $request;
+        return $nam ;
+    }
+
+    public function gettruongthongke(Request $request){
+       
+        $tieuchi  = tieuchi::find($request->id)->daihan1234;
+        $truong = array();
+        foreach($tieuchi as $tc) {
+            array_push($truong, $tc->ma_truong);
+        }
+        $truong  = array_unique($truong);
+        
+        
+
+        return $truong ;
+    }
+
+    public function  test1234(){
+        return view('chart.test1');
+
     }
 
 
+
+   
+   
 }
+
+
+

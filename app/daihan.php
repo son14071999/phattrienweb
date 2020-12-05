@@ -27,5 +27,6 @@ class daihan extends Model
     public function tieuchidh(){
         return $this->belongsTo('App\tieuchi','ma_tc','id');
     }
+
     public $timestamps = false;
 }
