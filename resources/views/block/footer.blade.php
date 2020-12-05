@@ -1,29 +1,29 @@
 <footer>
-    <div class="row footer-1">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-4">
-            <div class="title-footer">ĐẠI HỌC QUỐC GIA HÀ NỘI</div>
-            <hr>
-            <div style="color: white">144 đường Xuân Thủy, Quận Cầu Giấy, Hà Nội, Việt Nam</div><br>
-            <div>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-google" ></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div id="custom_html-3" class="widget_text col pb-0 widget widget_custom_html"><div class="textwidget custom-html-widget"><p><iframe style="border: none; overflow: hidden;" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FVNU.DHQG%2F&amp;tabs=timeline&amp;width=350&amp;height=450&amp;small_header=true&amp;adapt_container_width=true&amp;hide_cover=true&amp;show_facepile=true&amp;appId" width="100%" height="200" frameborder="0" scrolling="no"><span data-mce-type="bookmark" style="display: inline-block; width: 0px; overflow: hidden; line-height: 0;" class="mce_SELRES_start">﻿</span></iframe></p></div></div>
-
-        </div>
+    <div class="footer-1">
+        <img src="{{asset('images/footer/footer_1.PNG')}}">
+        <img src="{{asset('images/footer/footer_2.PNG')}}">
+        <img src="{{asset('images/footer/footer_3.PNG')}}">
     </div>
-
-    <div class="row footer-2">
-        <div class="col-sm-12">
-
+    <div class="footer-thongtin">
+       <div class="footer-ngang">
+       </div>
+        <div class="thongtin">
+            <h9>Bản quyền thuộc về Đại học Quốc gia Hà Nội</h9><br>
+            <h9>144 đường Xuân Thủy, Quận Cầu Giấy, Hà Nội, Việt Nam</h9><br>
+            <h9>Giấy phép số 993/GP-TTĐT ngày 30/3/2020 của Sở thông tin và Truyền thông Hà Nội</h9><br>
         </div>
-
-    </div>
+        <div class="footer-nav">
+            <h9>Trang chủ | </h9>
+            <h9>Tìm kiếm | </h9>
+            <h9>Website</h9>
+            <h9>Tin tức</h9>
+        </div>
+        <div class="footer-icon">
+            <a href="https://www.facebook.com/VNU.DHQG"><img width="50" height="50" src="{{asset('images/footer/facebook.png')}}"></a>
+            <a href="https://www.youtube.com/channel/UC4M3ODig8JUqRZMM6zsn8SQ"><img width="50" height="50" src="{{asset('images/footer/youtube.png')}}"></a>
+        </div>
+    </div><br>
+    <div class="footer-3"></div>
 
 </footer>
 

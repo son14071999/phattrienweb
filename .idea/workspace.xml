@@ -21,12 +21,17 @@
   <component name="ChangeListManager">
     <list default="true" id="c17d8374-292d-4552-a5f5-6e176cfa9731" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ControllerTieuchi.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ControllerTieuchi.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/block/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/block/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/chart/postthongke.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/chart/postthongke.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/tieuchi.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tieuchi.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/public/css/cssFooter.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/cssFooter.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/block/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/block/footer.blade.php" afterDir="false" />
+>>>>>>> 934a787fd7d27359314120ebe0820923b375d90c
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,10 +223,15 @@
       <workItem from="1605952048092" duration="13823000" />
       <workItem from="1605981779073" duration="9067000" />
       <workItem from="1606037420653" duration="26737000" />
+<<<<<<< HEAD
       <workItem from="1606208939125" duration="417000" />
       <workItem from="1607072084207" duration="488000" />
       <workItem from="1607174184588" duration="21000" />
       <workItem from="1607174208545" duration="7690000" />
+=======
+      <workItem from="1607142977124" duration="28000" />
+      <workItem from="1607165107379" duration="5283000" />
+>>>>>>> 934a787fd7d27359314120ebe0820923b375d90c
     </task>
     <servers />
   </component>
@@ -257,10 +267,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1604714224514" />
-    <state x="777" y="228" width="579" height="596" key="find.popup" timestamp="1606075030700">
+    <state x="777" y="228" width="579" height="596" key="find.popup" timestamp="1607168520133">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="777" y="228" width="579" height="596" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1606075030700" />
+    <state x="777" y="228" width="579" height="596" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1607168520133" />
     <state x="864" y="216" key="run.anything.popup" timestamp="1604685200737">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
