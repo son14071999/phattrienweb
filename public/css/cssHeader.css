@@ -52,3 +52,15 @@
 #menu{
     z-index: 3;
 }
+.account-success{
+    float: left;
+    font-size: 15px;
+    margin-left: 15px;
+    margin-top: 15px;
+    color: #0aa13d;
+}
+.account-logout{
+    font-size: 15px;
+    margin-left: 20px;
+    color: #0aa13d;
+}

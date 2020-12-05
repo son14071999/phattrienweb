@@ -27,8 +27,10 @@
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
                         @if(Auth::check())
-                                <button><span>{{Auth::user()->name}}/</span></button>
-                                <a href="{{route('logout')}}"><span>Logout</span></a>
+                            <p class="account-success">Xin chào: {{Auth::user()->name}}</p>
+                            <a href="{{route('logout')}}" class="account-logout"><i class="fa fa-sign-out" aria-hidden="false"></i> <i>Đăng xuất</i></a>
+
+
                         @else
                             <a href="{{route('getLogin')}}" class="btn-login">Đăng nhập</a>
                         @endif
