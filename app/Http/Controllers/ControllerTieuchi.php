@@ -398,9 +398,50 @@ class ControllerTieuchi extends Controller
 
     }
 
+    public function truong(Request $request){
+        $option = ["all","Hoàn thành","Chưa hoàn thành"];
+        $select_op = "all";
+        $select_tc = "all";
+        $select_tr = $request->truong;
+        $select_dv = "all";
+        $g = $this->general($select_tc, $select_tr, $select_dv);
 
+        $daihan = $g[3];
+        return view('truong',compact('daihan','option','select_op','select_tr'));
+    }
 
+    public function getLoctruong(Request $request){
+        $option = ["all","Hoàn thành","Chưa hoàn thành"];
+        $select_op = $request->tieuchi;
+        $select_tc = "all";
+        $select_tr = $request->truong;
+        $select_dv = "all";
+        $g = $this->general($select_tc, $select_tr, $select_dv);
+        $daihan = [];
+        foreach ($g[3] as $k)
+        {
+            $v = $k->xong/$k->tong;
+            if ($select_op=="all")
+            {
+                $k->phantram = $v;
+                array_push($daihan, $k);
+            }
+            if ($select_op=="Hoàn thành" and $v >= 0.8)
+            {
+                $k->phantram = $v;
+                array_push($daihan, $k);
+            }
+            if ($select_op=="Chưa hoàn thành" and $v < 0.8)
+            {
+                $k->phantram = $v;
+                array_push($daihan, $k);
+            }
+        }
 
+//        $daihan = $g[3];
+
+        return view('truong',compact('daihan','option','select_op','select_tr'));
+    }
 
 }
 

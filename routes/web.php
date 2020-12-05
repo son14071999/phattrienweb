@@ -50,6 +50,9 @@ Route::put("/admin/updatetc/{id_tc}/{id1}", 'ManagerAdminTieuChiController@updat
 Route::resource("/admin/account", 'ManagerAdminAccountController');
 
 
+Route::get('truong/{truong}', 'ControllerTieuchi@truong')->name('truong');
+
+Route::post('tieu-chi/{truong}','ControllerTieuchi@getLoctruong')->name('loctruong');
 
 
 

@@ -51,15 +51,24 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('tieuchi')}}">Tiêu chí</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item dropdown">
                     <a class="nav-link" href="{{route('dvdd')}}">Đơn vị đào tạo</a>
+                    <div class="dropdown-content">
+                        <a href="{{route("truong", "khoa học tự nhiên")}}" class="dropdown-item" >khoa học tự nhiên</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Kinh Tế</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Giáo Dục</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Ngoại Ngữ</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Y dược</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">khoa học xã hội và nhân văn</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('thongke')}}">Thống kê</a>
                 </li>
-{{--                <li class="nav-item">--}}
-{{--                    <a class="nav-link" href="{{route('tintuc')}}">Tin tức</a>--}}
-{{--                </li>--}}
                 <li class="nav-item">
                     <a class="nav-link " href="#">Liên hệ</a>
                 </li>

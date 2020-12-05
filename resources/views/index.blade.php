@@ -143,10 +143,9 @@
     @yield('donvitructhuoc')
     @yield('bodychitieu')
     @yield('tintuc')
-        <div id="content">
+        <div id="content" style="min-height: 700px">
             @yield('content')
         </div>
-{{--    @include('block.donvitructhuoc')--}}
 
     @include('block.footer')
 </div>
@@ -154,17 +153,6 @@
 
 
 
-{{--    @include('block.slider')--}}
-
-{{--                @yield('sidebar')--}}
-
-
-{{--                @yield('content')--}}
-
-
-
-
-{{--    @include('block.footer')--}}
 
 
 

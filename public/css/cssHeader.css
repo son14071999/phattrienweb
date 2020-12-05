@@ -52,3 +52,21 @@
 #menu{
     z-index: 3;
 }
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFFFFF;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a{
+    color: black;
+    padding: 2px 35px 2px 15px;
+    text-decoration: none;
+}
