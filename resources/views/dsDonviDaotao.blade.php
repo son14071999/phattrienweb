@@ -8,7 +8,7 @@
             @foreach($truong as $t)
                 <div>
                     <img src="{{asset('images/'.$t->logo)}}">
-                    <p><a href="" class="name_school" style="font-size: 3em; color: #3346ee">{{$t->ten}}</a></p>
+                    <a href="" class="name_school" style="font-size: 3em; color: #3346ee">{{$t->ten}}</a>
                 </div>
             @endforeach
         </div>

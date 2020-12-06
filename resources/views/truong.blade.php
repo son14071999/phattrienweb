@@ -2,11 +2,11 @@
 @section('content')
     <div class="row">
         <div class="col-sm-2"></div>
-        <div class="col-sm-8">
+        <div class="chitieu-select">
             <form method="post" action="{{route('loctruong', $select_tr)}}">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <label for="Lựa chọn">Lựa chọn:</label>
-                <select name="tieuchi" id="tieuchi">
+                <select name="tieuchi" id="tieuchi" class="custom-select">
                 @foreach($option as $op)
                     @if($op==$select_op)
                         <option value="{{$op}}" selected>{{$op}}</option>
@@ -16,7 +16,7 @@
                 @endforeach
                 </select>
 
-                <button type="submit">Lọc</button>
+                <button type="submit" class="btn btn-success">Lọc</button>
 
             </form>
         </div>
@@ -26,10 +26,11 @@
 
 
 
-    <table class="table table-hover">
+{{--    <table class="table table-hover">--}}
+    <table class="responstable">
         <thead>
         <tr>
-            <th>stt</th>
+            <th>Stt</th>
             <th>Tiêu chí</th>
             <th>Năm</th>
             <th>Hoàn thành</th>
