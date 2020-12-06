@@ -1,9 +1,9 @@
 <footer>
-{{--    <div class="footer-1">--}}
-{{--        <img src="{{asset('images/footer/footer_1.PNG')}}">--}}
-{{--        <img src="{{asset('images/footer/footer_2.PNG')}}">--}}
-{{--        <img src="{{asset('images/footer/footer_3.PNG')}}">--}}
-{{--    </div>--}}
+    <div class="footer-1">
+        <img src="{{asset('images/footer/footer_1.PNG')}}">
+        <img src="{{asset('images/footer/footer_2.PNG')}}">
+        <img src="{{asset('images/footer/footer_3.PNG')}}">
+    </div>
     <div class="footer-thongtin">
        <div class="footer-ngang">
        </div>

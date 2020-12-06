@@ -1,16 +1,16 @@
 @extends('index')
 @section('content')
     <div class="row">
-        <div class="col-sm-2"></div>
-        <div class="col-sm-8">
+{{--        <div class="col-sm-2"></div>--}}
+        <div class="chitieu-select">
             <form method="post" action="{{route('loc')}}">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
                 <label for="tieuchi">Tiêu chí:</label>
-                <select name="tieuchi" id="tieuchi">
+                <select name="tieuchi" id="tieuchi" class="custom-select">
                     @if($select_tc=='all')
-                        <option value="all" selected>all</option>
+                        <option value="all" selected>Tổng</option>
                     @else
-                        <option value="all">all</option>
+                        <option value="all">Tổng</option>
                     @endif
                     @foreach($tieuchi as $tc)
                         @if($tc->ten==$select_tc)
@@ -21,12 +21,12 @@
                     @endforeach
                 </select>
 
-                <label for="truong">Trường:</label>
-                <select name="truong" id="truong">
+                <label for="truong" class="lable-tieuchi">Trường:</label>
+                <select name="truong" id="truong" class="custom-select">
                     @if($select_tr=='all')
-                        <option value="all" selected>all</option>
+                        <option value="all" selected>Tổng</option>
                     @else
-                        <option value="all">all</option>
+                        <option value="all">Tổng</option>
                     @endif
                     @foreach($truong as $t)
                         @if($t->ten==$select_tr)
@@ -38,12 +38,12 @@
                 </select>
 
 
-                <label for="donvi">Đơn vị:</label>
-                <select name="donvi" id="donvi">
+                <label for="donvi" class="lable-tieuchi">Đơn vị:</label>
+                <select name="donvi" id="donvi" class="custom-select">
                     @if($select_dv=='all')
-                        <option value="all" selected>all</option>
+                        <option value="all" selected>Tổng</option>
                     @else
-                        <option value="all">all</option>
+                        <option value="all">Tổng</option>
                     @endif
                     @foreach($donvi as $d)
                         @if($d->ten==$select_dv)
@@ -53,8 +53,7 @@
                         @endif
                     @endforeach
                 </select>
-                <button type="submit">Lọc</button>
-
+                <button type="submit" class="btn btn-success">Lọc</button>
             </form>
         </div>
 
@@ -63,17 +62,18 @@
 
 
 
-    <table class="table table-hover">
+{{--    <table class="table table-hover">--}}
+    <table class="responstable">
         <thead>
         <tr>
-            <th>stt</th>
-            <th>Tiêu chí</th>
-            <th>Năm</th>
-            <th>Hoàn thành</th>
-            <th>Tổng</th>
-            <th>Đơn vị</th>
-            <th>Trường</th>
-            <th>Kết quả</th>
+            <th><span>Stt</span></th>
+            <th><span>Tiêu chí</span></th>
+            <th><span>Năm</span></th>
+            <th><span>Hoàn thành</span></th>
+            <th><span>Tổng</span></th>
+            <th><span>Đơn vị</span></th>
+            <th><span>Trường</span></th>
+            <th><span>Kết quả</span></th>
         </tr>
         </thead>
         <tbody>
@@ -87,7 +87,7 @@
                 <td>{{$daihan[$i]->don_vi}}</td>
                 <td>{{$daihan[$i]->ma_truong}}</td>
                 @if($daihan[$i]->xong/$daihan[$i]->tong <=0.8)
-                    <td><input type="checkbox" disabled ></td>
+                    <td><input type="checkbox" disabled></td>
                 @else
                     <td><input type="checkbox" disabled checked style="background: #0c5460"></td>
                 @endif
