@@ -406,7 +406,28 @@ class ControllerTieuchi extends Controller
         $select_dv = "all";
         $g = $this->general($select_tc, $select_tr, $select_dv);
 
-        $daihan = $g[3];
+
+        $daihan = [];
+        foreach ($g[3] as $k)
+        {
+            $v = $k->xong/$k->tong;
+            if ($select_op=="all")
+            {
+                $k->phantram = $v;
+                array_push($daihan, $k);
+            }
+            if ($select_op=="Hoàn thành" and $v >= 0.8)
+            {
+                $k->phantram = $v;
+                array_push($daihan, $k);
+            }
+            if ($select_op=="Chưa hoàn thành" and $v < 0.8)
+            {
+                $k->phantram = $v;
+                array_push($daihan, $k);
+            }
+        }
+//        $daihan = $g[3];
         return view('truong',compact('daihan','option','select_op','select_tr'));
     }
 

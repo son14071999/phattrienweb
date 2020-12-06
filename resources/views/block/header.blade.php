@@ -16,7 +16,7 @@
         <div class="col-sm-12 header-2">
             <nav class="navbar navbar-expand-lg">
 
-                    <a href="#"><img src="{{asset('images/logo.png')}}" class="navbar-brand img-logo"></a>
+                    <a href="{{route("index")}}"><img src="{{asset('images/logo.png')}}" class="navbar-brand img-logo"></a>
 
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -27,7 +27,7 @@
                             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                         </form>
                         @if(Auth::check())
-                            <p class="account-success">Xin chào: {{Auth::user()->name}}</p>
+                            <a href="/admin/tieuchi"><p class="account-success">Xin chào: {{Auth::user()->name}}</p></a>
                             <a href="{{route('logout')}}" class="account-logout"><i class="fa fa-sign-out" aria-hidden="false"></i> <i>Đăng xuất</i></a>
 
 
