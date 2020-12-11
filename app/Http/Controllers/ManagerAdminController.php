@@ -18,7 +18,6 @@ class ManagerAdminController extends Controller
     }
 
     public function index(){
-        $this->AuthLogin();
-        return view("admin.trangchu_admin");
+        
     }
 }

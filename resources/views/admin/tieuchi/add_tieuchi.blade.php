@@ -1,17 +1,17 @@
 @extends('admin.layout.admin_layout')
 @section('title')
-Thêm Tiêu Chí
+Thêm chỉ số
 @endsection
 @section('content')
 <div class="page-content-wrapper animated fadeInRight">
   <div class="page-content" >
     <div class="wrapper border-bottom page-heading">
       <div class="col-lg-12">
-        <h2> Thêm Tiêu Chí </h2>
+        <h2> Thêm Chỉ Số Tiêu Chí </h2>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"> <a href="{{ URL::to('/admin/index') }}">Trang chủ</a> </li>
             <li class="breadcrumb-item"> <a>Tính năng</a> </li>
-          <li class="breadcrumb-item active"> <strong> Thêm Tiêu Chí </strong> </li>
+          <li class="breadcrumb-item active"> <strong> Thêm Chỉ Số Tiêu Chí </strong> </li>
            
         </ol>
       </div>
@@ -21,26 +21,27 @@ Thêm Tiêu Chí
       
         <div class="col-lg-12 mt-md-2  mb-md-2">
           <div class="widgets-container">
-            <h5>Thêm tiêu chí</h5>
+            <h5>Thêm chỉ số tiêu chí</h5>
             <hr>
             @include('admin.error')
             <form action="{{ URL::to('/admin/tieuchi') }}" name="themtc" class="themtieuchi" method="POST" enctype="multipart/form-data" onsubmit = "return(validate());">
               {{ csrf_field() }}
-              <div class="form-group row">
-                <label class="col-sm-2 control-label">Tên Tiêu chí</label>
-                <div class="col-sm-10">
-                  <input placeholder="Tên tiêu chí" class="form-control" type="text" name="tentieuchi">
-                </div>
-              </div>
-
-                <hr>
-                <div class="form-group row">
-                <label class="col-sm-2 control-label">Mô tả tiêu chí</label>
-                <div class="col-sm-10">
-                <textarea placeholder="mô tả tiêu chí" class="form-control" type="text" name="motatieuchi" ></textarea>
-                  
-                </div>
-              </div>
+            
+                  <div class="form-group row">
+                      <label class="col-sm-2 control-label">Tiêu chí</label>
+                         <div class="col-sm-10">
+                            <select  name="tieuchi"  class="custom-select">
+                              
+                            @foreach($tieuchi as $tc)
+                              
+                              <option value="{{$tc->id}}" >{{$tc->ten}}</option>
+                            @endforeach
+                              
+                            </select>
+                      </div>
+                    </div>
+                    
+              
            
             
 
@@ -48,11 +49,19 @@ Thêm Tiêu Chí
 
               <hr>
               <div class="form-group row">
-                <label class="col-sm-2 control-label">Năm</label>
-                <div class="col-sm-10">
-                  <input placeholder="nam" class="form-control" type="number" name="nam" value="0">
-                </div>
-              </div>
+                      <label class="col-sm-2 control-label">Năm</label>
+                         <div class="col-sm-10">
+                            <select  name="nam"  class="custom-select">
+                              
+                            @for($i=2000; $i<2200; $i=$i+5)
+                              
+                              <option value="{{$i}}" >{{$i}}</option>
+                            @endfor
+                              
+                            </select>
+                      </div>
+                    </div>
+             
             
 
              <hr>
@@ -113,20 +122,7 @@ Thêm Tiêu Chí
                     </div>
                 @endif
 
-                    <hr>
-                  <div class="form-group row">
-                      <label class="col-sm-2 control-label">Đơn vị quản lý</label>
-                         <div class="col-sm-10">
-                            <select  name="donvi"  class="custom-select">
-                              
-                            @foreach($donvi as $dv)
-                              
-                              <option value="{{$dv->id}}" >{{$dv->ten}}</option>
-                            @endforeach
-                              
-                            </select>
-                      </div>
-                    </div>
+                  
                     
                     
                    
@@ -172,27 +168,27 @@ Thêm Tiêu Chí
     
      
      if(muctieunam1 > muctieu) {
-        document.getElementById('muctieuloi1').innerHTML = "muc tieu nam 1 khong the lon hon muc tieu tong";
+        document.getElementById('muctieuloi1').innerHTML = "mục tiêu năm 1 không thể lớn hơn mục tiêu tổng";
         return false;
         
      }
       if( hoanthanhnam1 > hoanthanh) {
         document.getElementById('muctieuloi1').innerHTML = ""
-        document.getElementById('hoanthanhloi1').innerHTML = "hoan thanh nam 1 khong the lon hon hoan thanh tong";
+        document.getElementById('hoanthanhloi1').innerHTML = "hoàn thành năm 1 không thể lớn hơn hoàn thành tổng";
         document.themtc.hoanthanhnam1.focus();
         return false;
      }
      if (muctieunam2 > (muctieu - muctieunam1)) {
         document.getElementById('muctieuloi1').innerHTML = ""
         document.getElementById('hoanthanhloi1').innerHTML = "";
-        document.getElementById('muctieuloi2').innerHTML = "muc tieu nam 2 khong the lon hon " + (muctieu - muctieunam1);
+        document.getElementById('muctieuloi2').innerHTML = "mục tiêu năm 2 không thể lớn hơn " + (muctieu - muctieunam1);
         return false;
      } 
      if (hoanthanhnam2 > (hoanthanh - hoanthanhnam1)) {
         document.getElementById('muctieuloi1').innerHTML = ""
         document.getElementById('hoanthanhloi1').innerHTML = "";
         document.getElementById('muctieuloi2').innerHTML = "";
-        document.getElementById('hoanthanhloi2').innerHTML = "hoan thanh nam 2 khong the lon hon " + (hoanthanh - hoanthanhnam1);
+        document.getElementById('hoanthanhloi2').innerHTML = "hoàn thành năm 2 không thể lớn hơn " + (hoanthanh - hoanthanhnam1);
         return false;
      } 
 
@@ -201,7 +197,7 @@ Thêm Tiêu Chí
         document.getElementById('hoanthanhloi1').innerHTML = "";
         document.getElementById('muctieuloi2').innerHTML = "";
         document.getElementById('hoanthanhloi2').innerHTML = "";
-        document.getElementById('muctieuloi3').innerHTML = "muc tieu nam 3 khong the lon hon " + (muctieu - muctieunam1 - muctieunam2);
+        document.getElementById('muctieuloi3').innerHTML = "mục tiêu năm 3 không thể lớn hơn " + (muctieu - muctieunam1 - muctieunam2);
         return false;
      } 
 
@@ -211,7 +207,7 @@ Thêm Tiêu Chí
         document.getElementById('muctieuloi2').innerHTML = "";
         document.getElementById('hoanthanhloi2').innerHTML = "";
         document.getElementById('muctieuloi3').innerHTML = "";
-        document.getElementById('hoanthanhloi3').innerHTML = "hoan thanh nam 3 khong the lon hon " + (hoanthanh - hoanthanhnam1 - hoanthanhnam2);
+        document.getElementById('hoanthanhloi3').innerHTML = "hoàn thành năm 3 không thể lớn hơn " + (hoanthanh - hoanthanhnam1 - hoanthanhnam2);
         return false;
      } 
 
@@ -222,7 +218,7 @@ Thêm Tiêu Chí
         document.getElementById('hoanthanhloi2').innerHTML = "";
         document.getElementById('muctieuloi3').innerHTML = "";
         document.getElementById('hoanthanhloi3').innerHTML = "";
-        document.getElementById('muctieuloi4').innerHTML = "muc tieu nam 4 khong the lon hon " + (muctieu - muctieunam1 - muctieunam2 -muctieunam3);
+        document.getElementById('muctieuloi4').innerHTML = "mục tiêu năm 4 không thể lớn hơn " + (muctieu - muctieunam1 - muctieunam2 -muctieunam3);
         return false;
      } 
 
@@ -234,7 +230,7 @@ Thêm Tiêu Chí
         document.getElementById('muctieuloi3').innerHTML = "";
         document.getElementById('hoanthanhloi3').innerHTML = "";
         document.getElementById('muctieuloi4').innerHTML = "";
-        document.getElementById('hoanthanhloi4').innerHTML = "hoan thanh nam 4 khong the lon hon " + (hoanthanh - hoanthanhnam1 - hoanthanhnam2 - hoanthanhnam3);
+        document.getElementById('hoanthanhloi4').innerHTML = "hoàn thành năm 4 không thể lớn hơn " + (hoanthanh - hoanthanhnam1 - hoanthanhnam2 - hoanthanhnam3);
         return false;
      } 
 
@@ -247,7 +243,7 @@ Thêm Tiêu Chí
         document.getElementById('hoanthanhloi3').innerHTML = "";
         document.getElementById('muctieuloi4').innerHTML = "";
         document.getElementById('hoanthanhloi4').innerHTML ="";
-        document.getElementById('muctieuloi5').innerHTML = "muc tieu nam 5 khong the lon hon " + (muctieu - muctieunam1 - muctieunam2 -muctieunam3 -muctieunam4);
+        document.getElementById('muctieuloi5').innerHTML = "mục tiêu năm 5 không thể lớn hơn " + (muctieu - muctieunam1 - muctieunam2 -muctieunam3 -muctieunam4);
         return false;
      } 
 
@@ -261,7 +257,7 @@ Thêm Tiêu Chí
         document.getElementById('muctieuloi4').innerHTML = "";
         document.getElementById('hoanthanhloi4').innerHTML ="";
         document.getElementById('muctieuloi5').innerHTML = "";
-        document.getElementById('hoanthanhloi5').innerHTML = "hoan thanh nam 5 khong the lon hon " + (hoanthanh - hoanthanhnam1 - hoanthanhnam2 - hoanthanhnam3 - hoanthanhnam4);
+        document.getElementById('hoanthanhloi5').innerHTML = "hoàn thành năm 5 không thể lớn hơn " + (hoanthanh - hoanthanhnam1 - hoanthanhnam2 - hoanthanhnam3 - hoanthanhnam4);
         return false;
      } 
 

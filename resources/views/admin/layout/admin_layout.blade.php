@@ -8,8 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>@yield('title')</title>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
   <style type="text/css">
   .box{
     width:600px;
@@ -91,11 +90,19 @@
             <li class="nav-item">
             <a class="nav-link nav-toggle" href="javascript:;"> <i class="fa fa-file-o"></i> <span class="title">Tiêu chí</span> <span class="arrow"></span> </a>
             <ul class="sub-menu">
-              <li class="nav-item">
-                <a class="nav-link nav-toggle" href="{{URL::to('/admin/tieuchi/create')}}"> <span class="title">Thêm tiêu chí</span> </a>
+            @if(Auth::user()->rule == 1)
+            <li class="nav-item">
+                <a class="nav-link nav-toggle" href="{{URL::to('/admin/create-tieuchi')}}"> <span class="title">Thêm tiêu chí</span> </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/tieuchi') }}"> <span class="title">Danh sách tiêu chí</span> </a>
+                <a class="nav-link nav-toggle" href="{{URL::to('/admin/list-tieuchi')}}"> <span class="title">Danh sách tiêu chí</span> </a>
+              </li>
+              @endif
+              <li class="nav-item">
+                <a class="nav-link nav-toggle" href="{{URL::to('/admin/tieuchi/create')}}"> <span class="title">Thêm chỉ số tiêu chí</span> </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/tieuchi') }}"> <span class="title">Danh sách dài hạn</span> </a>
               </li>
             </ul>
           </li>
@@ -112,6 +119,43 @@
             </ul>
           </li>
           @endif
+          @if(Auth::user()->rule == 1)
+          <li class="nav-item">
+            <a class="nav-link nav-toggle" href="javascript:;"> <i class="fa fa-graduation-cap"></i> <span class="title">Đơn vị</span> <span class="arrow"></span> </a>
+            <ul class="sub-menu">
+            <li class="nav-item">
+                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/daotao/create') }}"> <span class="title">Thêm đơn vị</span> </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/daotao') }}"> <span class="title">Danh sách đơn vị</span> </a>
+              </li>
+            </ul>
+          </li>
+          @endif
+         
+          <li class="nav-item">
+            <a class="nav-link nav-toggle" href="javascript:;"> <i class="fa fa-home"></i> <span class="title">Trường</span> <span class="arrow"></span> </a>
+            <ul class="sub-menu">
+            @if(Auth::user()->rule != 1)
+            <li class="nav-item">
+                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/school/'.Auth::user()->ma_truong.'/edit') }}"> <span class="title">Cập nhật trường</span> </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/school') }}"> <span class="title">Danh sách trường</span> </a>
+              </li>
+              @endif
+            @if(Auth::user()->rule == 1)
+            <li class="nav-item">
+                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/school/create') }}"> <span class="title">Thêm trường</span> </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/school') }}"> <span class="title">Danh sách trường</span> </a>
+              </li>
+             
+              @endif
+            </ul>
+          </li>
+         
         </ul>
       </div>
     </div>
@@ -132,8 +176,7 @@
   
   <!-- main js -->
   <script src="{{ asset('admin/assets/js/main.js') }}"></script>
-  <script src="{{ asset('admin/assets/js/chartJs.js') }}"></script>
-  <script src="{{ asset('admin/assets/js/Chart.bundle.js') }}"></script>
+
 
   
 

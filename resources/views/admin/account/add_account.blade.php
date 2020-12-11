@@ -54,6 +54,14 @@ Thêm tài khoản
                   <input placeholder="email" class="form-control" type="email" name="email">
                 </div>
               </div>
+              <hr>
+            
+              <div class="form-group">
+                  <label>
+                  <input name="role" type="checkbox" style="margin: 0px; width: 20px; height: 20px; " >
+                     <span style="margin-left:5px;">Role</span> </label>
+                </div>
+               
             
 
           

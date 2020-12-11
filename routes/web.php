@@ -35,19 +35,31 @@ Route::post('search','ControllerTieuchi@getSearch')->name('search');
 
 
 Route::get('thongke', 'ControllerTieuchi@demoThongKe')->name('thongke');
-Route::post('thongkep', 'ControllerTieuchi@postThongKe')->name('postthongke');
+//Route::post('thongkep', 'ControllerTieuchi@postThongKe')->name('postthongke');
 Route::post('getnamthongke', 'ControllerTieuchi@getnamthongke')->name('getnamthongke');
-Route::post('gettruongthongke', 'ControllerTieuchi@gettruongthongke')->name('gettruongthongke');
-Route::get('test1234', 'ControllerTieuchi@test1234')->name('test1234');
+//Route::post('gettruongthongke', 'ControllerTieuchi@gettruongthongke')->name('gettruongthongke');
+Route::post('test1234', 'ControllerTieuchi@test1234')->name('test1234');
+Route::get('test1', 'ControllerTieuchi@test1')->name('test1');
 $ManagerAdminController = 'ManagerAdminController@';
-Route::get("/admin/index", $ManagerAdminController.'index');
+// Route::get("/admin/index", $ManagerAdminController.'index');
 
 $ManagerAdminTieuChiController = 'ManagerAdminTieuChiController';
 Route::resource("/admin/tieuchi", $ManagerAdminTieuChiController);
 Route::get("/admin/showtc/{id}/{id1}", 'ManagerAdminTieuChiController@showTC');
+Route::get("/admin/create-tieuchi", 'ManagerAdminTieuChiController@create_tieuchi');
+Route::post("/admin/add-tieuchi", 'ManagerAdminTieuChiController@add_tieuchi');
+Route::get("/admin/list-tieuchi", 'ManagerAdminTieuChiController@list_tieuchi');
+Route::get("/admin/edit-tieuchi/{id}", 'ManagerAdminTieuChiController@show_edit_tieuchi');
+Route::post("/admin/update-tieuchi/{id}", 'ManagerAdminTieuChiController@update_tieuchi');
+Route::get("/admin/detete-tieuchi/{id}", 'ManagerAdminTieuChiController@delete_tieuchi');
 Route::put("/admin/updatetc/{id_tc}/{id1}", 'ManagerAdminTieuChiController@updateTC');
 
 Route::resource("/admin/account", 'ManagerAdminAccountController');
+
+Route::resource("/admin/daotao", 'ManagerAdminDaotaoController');
+Route::resource("/admin/school", 'ManagerAdminSchoolController');
+Route::get("/delete-donvi/{id}", 'ManagerAdminDaotaoController@destroy_donvi');
+Route::get("/delete-school/{id}", 'ManagerAdminSchoolController@destroy_school');
 
 
 Route::get('truong/{truong}', 'ControllerTieuchi@truong')->name('truong');

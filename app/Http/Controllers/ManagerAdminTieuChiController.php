@@ -51,7 +51,7 @@ class ManagerAdminTieuChiController extends Controller
             ->join('truong','truong.id','=','daihan.ma_truong')
             ->join('donvi','donvi.id', '=', 'tieuchi.ma_dv')
             ->where('daihan.ma_truong','=',$truong)
-            ->get();
+            ->orderByDesc('daihan.id')->get();
             return view("admin.tieuchi.all_tieuchi", compact("tieuchi"));
         }
        
@@ -60,10 +60,91 @@ class ManagerAdminTieuChiController extends Controller
             ->join('tieuchi', 'tieuchi.id','=','daihan.ma_tc')
             ->join('truong','truong.id','=','daihan.ma_truong')
             ->join('donvi','donvi.id', '=', 'tieuchi.ma_dv')
-            ->get();
+            ->orderByDesc('daihan.id')->get();
         return view("admin.tieuchi.all_tieuchi", compact("tieuchi"));
         
        
+    }
+
+    public function create_tieuchi(){
+        $this->AuthLogin();
+        $donvi = donvi::all();
+       
+       
+        return view("admin.tieuchi.add_tieuchichung", compact("donvi"));
+    }
+
+    public function add_tieuchi(Request $request){
+        $this->AuthLogin();
+
+        $validateData = $request->validate([
+            'tentieuchi' => 'required|min:2',
+            'motatieuchi' => 'required|min:2',
+            
+
+
+        ],
+        [
+            'tentieuchi.required' => 'Vui lòng nhập tên tiêu chí',
+            'motatieuchi.required' => 'Vui lòng nhập mô tả tiêu chí',
+            'tentieuchi.min' => 'Tên tiêu chí phải có độ dài tối thiểu lớn hơn 2',
+            'motatieuchi.min' => 'Mô tả tiêu chí phải có độ dài tối thiểu lớn hơn 2',
+            
+
+        ]
+            
+        );
+        $tieuchi = new tieuchi();
+        $tieuchi->ten = $request->tentieuchi;
+        $tieuchi->moTa = $request->motatieuchi;
+        $tieuchi->ma_dv = $request->donvi;
+       
+        $tieuchi->save();
+        Session::put('massage',' thêm tiêu chí thành công!');
+        return Redirect::to('/admin/list-tieuchi');
+    }
+
+    public function show_edit_tieuchi($id){
+        $this->AuthLogin();
+        $donvi = donvi::all();
+        $tieuchi = tieuchi::find($id);
+       
+        return view("admin.tieuchi.edit_tieuchichung", compact("donvi", "tieuchi"));
+    }
+
+    public function update_tieuchi(Request $request, $id){
+        $this->AuthLogin();
+
+        $validateData = $request->validate([
+            'tentieuchi' => 'required|min:2',
+            'motatieuchi' => 'required|min:2',
+            
+
+
+        ],
+        [
+            'tentieuchi.required' => 'Vui lòng nhập tên tiêu chí',
+            'motatieuchi.required' => 'Vui lòng nhập mô tả tiêu chí',
+            'tentieuchi.min' => 'Tên tiêu chí phải có độ dài tối thiểu lớn hơn 2',
+            'motatieuchi.min' => 'Mô tả tiêu chí phải có độ dài tối thiểu lớn hơn 2',
+            
+
+        ]
+            
+        );
+        $tieuchi = tieuchi::find($id);
+        $tieuchi->ten = $request->tentieuchi;
+        $tieuchi->moTa = $request->motatieuchi;
+        $tieuchi->ma_dv = $request->donvi;
+       
+        $tieuchi->save();
+        Session::put('massage',' cập nhật tiêu chí thành công!');
+        return Redirect::to('/admin/list-tieuchi');
+    }
+
+    public function list_tieuchi(){
+        $tieuchi = tieuchi::orderBy('id', 'DESC')->get();
+        return view("admin.tieuchi.list_tieuchi", compact('tieuchi'));
     }
 
     /**
@@ -75,9 +156,10 @@ class ManagerAdminTieuChiController extends Controller
     {
         $this->AuthLogin();
         $donvi = donvi::all();
+        $tieuchi = tieuchi::all();
         $truong = DB::table('truong')->get();
        
-        return view("admin.tieuchi.add_tieuchi", compact("donvi", "truong"));
+        return view("admin.tieuchi.add_tieuchi", compact("donvi", "truong","tieuchi"));
     }
 
     /**
@@ -91,9 +173,8 @@ class ManagerAdminTieuChiController extends Controller
         $this->AuthLogin();
 
         $validateData = $request->validate([
-            'tentieuchi' => 'required|min:2',
-            'motatieuchi' => 'required|min:2',
-            'nam' => 'required|numeric|min:1000',
+            
+           
             'hoanthanh' => 'required|numeric|min:0',
             'muctieu' => 'required|numeric|min:0',
             'hoanthanhnam1' => 'required|numeric|min:0',
@@ -110,11 +191,8 @@ class ManagerAdminTieuChiController extends Controller
 
         ],
         [
-            'tentieuchi.required' => 'Vui lòng nhập tên tiêu chí',
-            'motatieuchi.required' => 'Vui lòng nhập mô tả tiêu chí',
-            'tentieuchi.min' => 'Tên tiêu chí phải có độ dài tối thiểu lớn hơn 2',
-            'motatieuchi.min' => 'Mô tả tiêu chí phải có độ dài tối thiểu lớn hơn 2',
-            'nam.min' => 'Năm phải lớn hơn 1000',
+            
+            
             'hoanthanh.min' => 'Hoàn thành tối thiểu là 0',
             'muctieu.min' => 'Mục tiêu tối thiểu là 0',
             'hoanthanhnam1.min' => 'Hoàn thành năm 1 tối thiểu là 0',
@@ -135,22 +213,13 @@ class ManagerAdminTieuChiController extends Controller
 
         $id = Auth::user()->rule;
         $truong = Auth::user()->ma_truong;
-        $tentieuchi = $request->tentieuchi;
-        $tieuchi = tieuchi::where('ten',$tentieuchi)->first(); 
-        if($tieuchi===null){
-            $tieuchi = new tieuchi();
-        }
+       
         $daihan = new daihan();
         
-        $tieuchi->ten = $tentieuchi;
-     
-        $tieuchi->moTa = $request->motatieuchi;
-        $tieuchi->ma_dv = $request->donvi;
-       
-        $tieuchi->save();
         
-        $daihan->ma_tc = $tieuchi->id;
+        $daihan->ma_tc = $request->tieuchi;
         $nam = $request->nam;
+        // $nam = 2025;
         $daihan->nam = $nam;
         $daihan->xong = $request->hoanthanh;
         $daihan->tong = $request->muctieu;
@@ -164,16 +233,16 @@ class ManagerAdminTieuChiController extends Controller
         for ($i = 5; $i>0 ;$i--){
             $nganhan = new nganhan();
             $nganhan->ma_tc = $daihan->id;
-            $hoanthanhnam = 'hoanthanhnam'.$i;
-            $muctieunam = 'muctieunam'.$i;
+            $hoanthanhnam = 'hoanthanhnam'.(6-$i);
+            $muctieunam = 'muctieunam'.(6-$i);
             $nganhan->xong = $request->$hoanthanhnam;
             $nganhan->tong = $request->$muctieunam;
-            $nganhan->nam = $nam - $i;
+            $nganhan->nam = $nam  - $i;
             $nganhan->save();
 
         }
        
-        Session::put('massage',' add  tieuchi success!');
+        Session::put('massage',' thêm chỉ số tiêu chí thành công!');
         return Redirect::to('/admin/tieuchi');
         
     }
@@ -202,12 +271,13 @@ class ManagerAdminTieuChiController extends Controller
     //edit tieu chi
       $this->AuthLogin();
       $tieuchi = tieuchi::find($id);
+      $tieuchiall = tieuchi::all();
       $daihan = daihan::find($id1);
       $nganhan = daihan::find($id1)->nganhan1;
       $donvi = donvi::all();
       $truong = DB::table('truong')->get();
       
-      return view('admin.tieuchi.edit_tieuchi', compact("tieuchi", "daihan", "nganhan","truong","donvi"));
+      return view('admin.tieuchi.edit_tieuchi', compact("tieuchi", "daihan", "nganhan","truong","donvi", 'tieuchiall'));
       
     }
 
@@ -216,9 +286,7 @@ class ManagerAdminTieuChiController extends Controller
         $this->AuthLogin();
 
         $validateData = $request->validate([
-            'tentc' => 'required|min:2',
-            'motatieuchi' => 'required|min:2',
-            'nam' => 'required|numeric|min:1000',
+           
             'hoanthanh' => 'required|numeric|min:0',
             'muctieu' => 'required|numeric|min:0',
             'hoanthanhnam1' => 'required|numeric|min:0',
@@ -235,11 +303,8 @@ class ManagerAdminTieuChiController extends Controller
 
         ],
         [
-            'tentc.required' => 'Vui lòng nhập tên tiêu chí',
-            'motatieuchi.required' => 'Vui lòng nhập mô tả tiêu chí',
-            'tentieuchi.min' => 'Tên tiêu chí phải có độ dài tối thiểu lớn hơn 2',
-            'motatieuchi.min' => 'Mô tả tiêu chí phải có độ dài tối thiểu lớn hơn 2',
-            'nam.min' => 'Năm phải lớn hơn 1000',
+            
+           
             'hoanthanh.min' => 'Hoàn thành tối thiểu là 0',
             'muctieu.min' => 'Mục tiêu tối thiểu là 0',
             'hoanthanhnam1.min' => 'Hoàn thành năm 1 tối thiểu là 0',
@@ -263,13 +328,8 @@ class ManagerAdminTieuChiController extends Controller
         $tieuchi = tieuchi::find($id_tc);
         $daihan = daihan::find($id1);
         $ngh = daihan::find($id1)->nganhan1;
-        // return $ngh;
-        $tieuchi->ten = $request->tentc;
-        $tieuchi->moTa = $request->motatieuchi;
-        $tieuchi->ma_dv = $request->donvi;
-
-
-        $tieuchi->save();
+        
+       
         
         $nam = $request->nam;
         $daihan->nam = $nam;
@@ -284,8 +344,8 @@ class ManagerAdminTieuChiController extends Controller
         for ($i = 5; $i>0 ;$i--){
             $nganhan = nganhan::find($ngh[5-$i]->id);
             $nganhan->ma_tc = $daihan->id;
-            $hoanthanhnam = 'hoanthanhnam'.$i;
-            $muctieunam = 'muctieunam'.$i;
+            $hoanthanhnam = 'hoanthanhnam'.(5 - $i + 1);
+            $muctieunam = 'muctieunam'.(5 - $i + 1);
             $nganhan->xong = $request->$hoanthanhnam;
             $nganhan->tong = $request->$muctieunam;
             $nganhan->nam = $nam - $i;
@@ -294,7 +354,7 @@ class ManagerAdminTieuChiController extends Controller
 
         }
        
-        Session::put('massage',' update  tieuchi success!');
+        Session::put('massage',' cập nhật chỉ số tiêu chí thành công!');
         return Redirect::to('/admin/tieuchi');
     }
 
@@ -346,9 +406,13 @@ class ManagerAdminTieuChiController extends Controller
         );
         $nganhan = nganhan::find($id);
         $id = $nganhan->tcdaihan->id;
+        $daihan = $nganhan->tcdaihan;
+        $hoanthanhmuctieu = $daihan->xong;
+        $daihan->xong = $hoanthanhmuctieu - $nganhan->xong + $request->hoanthanh;
+        $daihan->save();
         $nganhan->xong = $request->hoanthanh;
         $nganhan->save();
-        Session::put('massage',' update  tieuchi success!');
+        Session::put('massage',' cập nhật tiêu chí thành công!');
         return Redirect::to('/admin/tieuchi'.'/'.$id);
     }
 
@@ -360,6 +424,15 @@ class ManagerAdminTieuChiController extends Controller
      */
     public function destroy($id)
     {
-        //
+       
+    }
+
+    public function delete_tieuchi($id) {
+        $this->AuthLogin();
+    	$tieuchi = tieuchi::find($id);
+    	
+    	$tieuchi->delete();
+    	Session::put('massage',' xóa tiêu chí thành công!');
+        return Redirect::to('/admin/list-tieuchi');
     }
 }

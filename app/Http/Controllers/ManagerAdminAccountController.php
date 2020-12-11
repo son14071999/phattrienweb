@@ -70,6 +70,7 @@ class ManagerAdminAccountController extends Controller
     public function store(Request $request)
     {
         $this->AuthLogin();
+       
         $validateData = $request->validate([
             'name' => 'required|unique:account|min:3',
             'email' => 'required|unique:account|email',
@@ -91,11 +92,11 @@ class ManagerAdminAccountController extends Controller
         );
         $account = new account();
         $account->name = $request->name;
-        $account->rule = 0;
+        $account->rule = $request->has('role')==true ? 1:0;
         $account->email = $request->email;
         $account->ma_truong = $request->truong;
         $account->password = bcrypt($request->pass);
-
+        
         $account->save();
         Session::put('massage',' add  account success!');
         return Redirect::to('/admin/account');
@@ -139,7 +140,7 @@ class ManagerAdminAccountController extends Controller
     {
         $this->AuthLogin();
         $validateData = $request->validate([
-            'name' => 'required|unique:account|min:3',
+            'name' => 'required||min:3',
             'email' => 'required|email',
             'pass' => 'required|min:3'
 
@@ -147,7 +148,7 @@ class ManagerAdminAccountController extends Controller
         ],
         [
             'name.required' => 'Vui lòng nhập username',
-            'name.unique' => 'Username đã tồn tại',
+            
             'name.min' => 'Tên phải có độ dài tối thiểu lớn hơn 3',
             'email.required' => 'Vui lòng nhập email',
             'pass.required' => 'Vui lòng nhập password',

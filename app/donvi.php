@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class donvi extends Model
 {
     protected $table = 'donvi';
+    public $timestamps = false;
     //
 }
