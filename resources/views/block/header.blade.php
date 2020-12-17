@@ -58,15 +58,15 @@
                     <div class="dropdown-content">
                         <a href="{{route("truong", "khoa học tự nhiên")}}" class="dropdown-item" >khoa học tự nhiên</a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">Kinh Tế</a>
+                        <a href="{{route("truong", "kinh tế")}}" class="dropdown-item">Kinh Tế</a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">Giáo Dục</a>
+                        <a href="{{route("truong", "giáo dục")}}" class="dropdown-item">Giáo Dục</a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">Ngoại Ngữ</a>
+                        <a href="{{route("truong", "ngoại ngữ")}}" class="dropdown-item">Ngoại Ngữ</a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">Y dược</a>
+                        <a href="{{route("truong", "y dược")}}" class="dropdown-item">Y dược</a>
                         <div class="dropdown-divider"></div>
-                        <a href="#" class="dropdown-item">khoa học xã hội và nhân văn</a>
+                        <a href="{{route("truong", "khoa học xã hội và nhân văn")}}" class="dropdown-item">khoa học xã hội và nhân văn</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('thongke')}}">Thống kê</a>
