@@ -22,6 +22,11 @@ Route::get('tieu-chi', 'ControllerTieuchi@getTieuchi')->name('tieuchi');
 route::get('trang-chu','ControllerTrangchu@getTrangchu')->name('trangchu');
 Route::get('gioi-thieu', 'ControllerGioithieu@getGioithieu')->name('gioithieu');
 Route::get('login', 'ControllerAccount@getLogin')->name('getLogin');
+Route::get('login/forget-pass', 'ControllerAccount@viewforgetpass')->name('forgetpass');
+Route::post('login/forget-pass', 'ControllerAccount@forgetpass')->name('postForgetPass');
+Route::get('forget/pass', 'ControllerAccount@checkemail')->name('checkemail');
+Route::post('forget/pass', 'ControllerAccount@changePass')->name('changePass');
+
 Route::post('login', 'ControllerAccount@postLogin')->name('postLogin');
 Route::get('logout', 'ControllerAccount@logout')->name('logout');
 //Route::get('thong-ke', 'ControllerTieuchi@getThongke')->name('thongke');
@@ -55,6 +60,8 @@ Route::get("/admin/detete-tieuchi/{id}", 'ManagerAdminTieuChiController@delete_t
 Route::put("/admin/updatetc/{id_tc}/{id1}", 'ManagerAdminTieuChiController@updateTC');
 
 Route::resource("/admin/account", 'ManagerAdminAccountController');
+Route::get("/admin/account/change-pass/{id}", 'ManagerAdminAccountController@viewchangepass');
+Route::post("/admin/account/change-pass/{id}", 'ManagerAdminAccountController@changepass');
 
 Route::resource("/admin/daotao", 'ManagerAdminDaotaoController');
 Route::resource("/admin/school", 'ManagerAdminSchoolController');

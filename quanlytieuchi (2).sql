@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2020 at 03:07 PM
+-- Generation Time: Dec 17, 2020 at 05:43 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -41,14 +41,14 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id`, `password`, `email`, `rule`, `name`, `ma_truong`) VALUES
-(1, '$2y$10$r7NQ0GuJNDV3x40fR6w59OAw93pDhHU4ttEG0b5Nw6sJUMapE62SW', 'son1999@gmail.com', 0, 'son', 'ueb'),
-(2, '$2y$10$T5OIL2/50MeklzUzQhZ2iOmwNX87.lXMFGDM9bcDvIeAcPI7wA3oK', 'hanh1999@gmail.com', 0, 'hanh', 'ued'),
-(3, '$2y$10$KOFaUQP9ieJKC7xGD/.26eIqJzYSydOAF/QqBMLlo7wth62h7ngyy', 'xuanAnh1999@gmail.com', 0, 'xuanAnh', 'uet'),
-(4, '$2y$10$qUp3e2h8zFNjiKPeTdYWG.b2THWdvpLEe9OQAeCRqrCI18m4TheP.', 'long1999@gmail.com', 0, 'long', 'ulis'),
-(5, '$2y$10$NbP7rvDHC6c88YpHwyry.O62hjRh3MDdz7qDEStg4bAn28u1d.bCa', 'dung1999@gmail.com', 0, 'dung', 'ussh'),
+(1, '$2y$10$.5g5Wxsj3xN0GoylmfjLaehKEm7Ynk.H8M42CDyoLnSqGsIEKCDC2', 'son1999@gmail.com', 0, 'son', 'ueb'),
+(2, '$2y$10$RYWbyRnPz/qRGvHQJHVJTeqomUl/eMp6thCUrDTv29CrR1NMCARjy', 'hanh1999@gmail.com', 0, 'hanh', 'ued'),
+(3, '$2y$10$i2f4F9Dv2aNmwBJgCh4Lje69jG6ufzOZayHk1mWGtUj8P.yLwcC7W', 'xuanAnh1999@gmail.com', 0, 'xuanAnh', 'uet'),
+(4, '$2y$10$DmBpHcivCxwNNsxDPqs3jeHNmAT5F1ALjHLGIaKG1m6LjB91v22Ti', 'long1999@gmail.com', 0, 'long', 'ulis'),
+(5, '$2y$10$o8LB4roqtepAV1xTueG2yu2cNDzHZZvytqbbmN2YBDkMtjDyRmwyC', 'dung1999@gmail.com', 0, 'dung', 'ussh'),
 (6, '$2y$10$1NBcreNHNLYGJXCd/aJodOybGBHrpT57hhqmVIXJekCzvyWcVFDFq', 'admin@gmail.com', 1, 'admin', 'hus'),
-(7, '$2y$10$fu26ipMGqMKbkLA9ZeLmMuuHntuOYy8Kd9jbuBYSviN7xnQlpJzIG', 'sontr1999@gmail.com', 0, 'sontr', 'vju'),
-(8, '$2y$10$zd8ex.o7xFoRFYNHAf7kX.i04otiHwT1ylnn9WLlLopUrzW5ICU86', 'user1999@gmail.com', 0, 'guest1', 'hus');
+(7, '$2y$10$RZnOUlD/bpYqe9uwC8j/ouvgkm9x2EpaUYXUyiYedsxmHIu1/6eU6', 'sontr1999@gmail.com', 0, 'sontr', 'vju'),
+(8, '$2y$10$TA3pb4bjUHvPVIGx6mEP..GXMg1MWFrYmvekmMxFcTzd4sYJjy/Q6', 'user1999@gmail.com', 0, 'guest1', 'hus');
 
 -- --------------------------------------------------------
 
@@ -1203,7 +1203,7 @@ CREATE TABLE `truong` (
 --
 
 INSERT INTO `truong` (`id`, `ten`, `logo`) VALUES
-('hus', 'khoa học tự nhiên', 'hus.png'),
+('hus', 'khoa học tự nhiên', ''),
 ('ueb', 'kinh tế', ''),
 ('ued', 'giáo dục', ''),
 ('uet', 'công nghệ', ''),
@@ -1237,7 +1237,7 @@ CREATE TABLE `users` (
 --
 ALTER TABLE `account`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `account_ma_truong_foreign` (`ma_truong`);
+  ADD KEY `ma_truong` (`ma_truong`);
 
 --
 -- Indexes for table `daihan`
@@ -1245,7 +1245,7 @@ ALTER TABLE `account`
 ALTER TABLE `daihan`
   ADD PRIMARY KEY (`id`),
   ADD KEY `daihan_ma_tc_foreign` (`ma_tc`),
-  ADD KEY `daihan_ma_truong_foreign` (`ma_truong`);
+  ADD KEY `ma_truong` (`ma_truong`);
 
 --
 -- Indexes for table `donvi`
@@ -1358,14 +1358,14 @@ ALTER TABLE `users`
 -- Constraints for table `account`
 --
 ALTER TABLE `account`
-  ADD CONSTRAINT `account_ma_truong_foreign` FOREIGN KEY (`ma_truong`) REFERENCES `truong` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `account_ibfk_1` FOREIGN KEY (`ma_truong`) REFERENCES `truong` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `daihan`
 --
 ALTER TABLE `daihan`
-  ADD CONSTRAINT `daihan_ma_tc_foreign` FOREIGN KEY (`ma_tc`) REFERENCES `tieuchi` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `daihan_ma_truong_foreign` FOREIGN KEY (`ma_truong`) REFERENCES `truong` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `daihan_ibfk_1` FOREIGN KEY (`ma_truong`) REFERENCES `truong` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `daihan_ma_tc_foreign` FOREIGN KEY (`ma_tc`) REFERENCES `tieuchi` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `nganhan`

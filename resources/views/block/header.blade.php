@@ -67,6 +67,8 @@
                         <a href="{{route("truong", "y dược")}}" class="dropdown-item">Y dược</a>
                         <div class="dropdown-divider"></div>
                         <a href="{{route("truong", "khoa học xã hội và nhân văn")}}" class="dropdown-item">khoa học xã hội và nhân văn</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="{{route("truong", "việt-nhật")}}" class="dropdown-item">việt-nhật</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('thongke')}}">Thống kê</a>

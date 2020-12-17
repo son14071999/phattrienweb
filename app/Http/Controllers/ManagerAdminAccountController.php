@@ -12,6 +12,7 @@ use App\User;
 use App\account;
 use App\truong;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ManagerAdminAccountController extends Controller
 {
@@ -28,6 +29,16 @@ class ManagerAdminAccountController extends Controller
         $admin_id= Session::get('admin');
 
         if($admin_id && Auth::user()->rule==1){
+             return redirect('/admin/index');
+        }else{
+            return redirect('/login')->send();
+        }
+    }
+
+    public function AuthLogin1(){
+        $admin_id= Session::get('admin');
+
+        if($admin_id){
              return redirect('/admin/index');
         }else{
             return redirect('/login')->send();
@@ -127,6 +138,37 @@ class ManagerAdminAccountController extends Controller
         $account  = User::find($id);
         $truong = DB::table("truong")->get();
         return view('admin.account.edit_account',compact('account','truong'));
+    }
+
+    public function viewchangepass($id)
+    {
+        $this->AuthLogin1();
+        $account  = User::find($id);
+        
+        return view('admin.account.change_pass',compact('account'));
+    }
+
+    public function changepass($id, Request $request)
+    {
+        $this->AuthLogin1();
+        $account  = account::find($id);
+        if (Hash::check($request->pass, $account->password)) {
+            if($request->passnew != $request->repassnew){
+                Session::put('massage',' password new không giống với re-passwordnew vui lòng nhập lại!');
+                return Redirect::to('/admin/account/change-pass/'.$account->id);
+            } else {
+                $account->password = Hash::make($request->passnew);
+                $account->save();
+                Session::put('massage',' đổi mật khẩu thành công!');
+                return Redirect::to('/admin/tieuchi');
+            }
+        } else {
+            Session::put('massage',' sai mật khẩu vui lòng nhập lại!');
+            return Redirect::to('/admin/account/change-pass/'.$account->id);
+        
+        }
+        
+        return view('admin.account.change_pass',compact('account'));
     }
 
     /**

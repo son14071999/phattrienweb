@@ -122,7 +122,8 @@ class ManagerAdminSchoolController extends Controller
         
         $truong->id = $request->tenrutgon;
         $truong->ten = $request->tentruong;
-        $truong->logo = "";
+
+        
       
         $truong->save();
         Session::put('massage',' cập nhật trường thành công!');

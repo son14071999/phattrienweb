@@ -19,7 +19,7 @@
         <input class="un" type="text" name="email" placeholder="Email" value="{{old('email')}}">
         <input class="pass" type="password" name="password" placeholder="Password"><br><br>
         <button class="submit" align="center" type="submit">Đăng nhập</button>
-            <a><h4 style="color: red" align="center"><i><u>Quên mật khẩu?</u></i></h4></a>
+        <a href="{{route('forgetpass')}}"><h4 style="color: red" align="center"><i><u>Quên mật khẩu?</u></i></h4></a>
 
     </form>
 </div>

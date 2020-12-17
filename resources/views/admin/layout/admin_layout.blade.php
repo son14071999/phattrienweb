@@ -67,6 +67,10 @@
               
                 <a href="{{ route('logout') }}"> <i class="icon-key"></i> Đăng xuất </a>
               </li>
+              <li>
+              
+              <a href="{{URL::to('/admin/account/change-pass/'.Auth::user()->id)}}"> <i class="icon-key"></i> Đổi mật khẩu </a>
+            </li>
             </ul>
           </li>
           <!-- END USER LOGIN DROPDOWN -->
