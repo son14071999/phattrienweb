@@ -1,7 +1,7 @@
 @extends('index')
 @section('content')
     <div class="row">
-{{--        <div class="col-sm-2"></div>--}}
+        {{--        <div class="col-sm-2"></div>--}}
         <div class="chitieu-select">
             <form method="post" action="{{route('loc')}}">
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -32,7 +32,7 @@
                         @if($t->ten==$select_tr)
                             <option value="{{$t->ten}}" selected>{{$t->ten}}</option>
                         @else
-                                <option value="{{$t->ten}}">{{$t->ten}}</option>
+                            <option value="{{$t->ten}}">{{$t->ten}}</option>
                         @endif
                     @endforeach
                 </select>
@@ -81,18 +81,18 @@
 
 
 
-{{--    <table class="table table-hover">--}}
+    {{--    <table class="table table-hover">--}}
     <table class="responstable">
         <thead>
         <tr>
             <th><span>Stt</span></th>
             <th><span>Tiêu chí</span></th>
             <th><span>Năm</span></th>
-            <th><span>Hoàn thành</span></th>
-            <th><span>Tổng</span></th>
+            <th><span>Còn Lại(thực tế)</span></th>
+            <th><span>Còn Lại(dự kiến)</span></th>
             <th><span>Đơn vị</span></th>
             <th><span>Trường</span></th>
-            <th><span>Phần trăm</span></th>
+            <th><span>Kết quả</span></th>
         </tr>
         </thead>
         <tbody>
@@ -101,11 +101,11 @@
                 <td>{{ $i + 1 }}</td>
                 <td>{{ $daihan[$i]-> ma_tc}}</td>
                 <td>{{$daihan[$i]->nam}}</td>
-                <td>{{$daihan[$i]->xong}}</td>
-                <td>{{$daihan[$i]->tong}}</td>
+                <td>{{$daihan[$i]->conLai_tt}}</td>
+                <td>{{$daihan[$i]->conLai_dk}}</td>
                 <td>{{$daihan[$i]->don_vi}}</td>
                 <td>{{$daihan[$i]->ma_truong}}</td>
-                <td>{{$daihan[$i]->phantram}}</td>
+                <td>{{$daihan[$i]->thuong}}</td>
 
             </tr>
         @endfor

@@ -96,26 +96,64 @@ class ControllerTieuchi extends Controller
         $truong = $g[0];
         $tieuchi = $g[1];
         $donvi = $g[2];
-        $daihan = $g[3];
-
-//        $daihan = [];
-        for($i=0; $i<count($daihan); $i++ )
+        $daihan1 = $g[3];
+        $nam = 2021;
+        $daihan = [];
+        for($i=0; $i<count($daihan1); $i++ )
         {
-            $v = round(($daihan[$i]->xong/$daihan[$i]->tong)*100, 2);
-            $daihan[$i]->phantram = $v;
-//            if ($select_ht == "all"){
-//                array_push($daihan,$daihan[$i]);
-//            }
-//            if ($select_ht == "Có khả năng" and ){
-//
-//            }
+            $v = round(($daihan1[$i]->xong/$daihan1[$i]->tong)*100, 2);
+            $daihan1[$i]->phantram = $v;
+            if ($select_ht == "all"){
+                array_push($daihan,$daihan1[$i]);
+            }
+            else{
+                if((int)$daihan1[$i]->nam<=$nam+4 and (int)$daihan1[$i]->nam >= $nam){
+                    $ht_xong = 0;
+                    $ht_tong = 0;
+                    $conLai_tt = 0;
+                    $conLai_dk = 0;
+                    $nganhan = nganhan::where("ma_tc", $daihan1[$i]->id)->get();
+                    foreach ($nganhan as $ng){
+                        if((int)$ng->nam <= $nam){
+                            $ht_xong = $ht_xong + (int)$ng->xong;
+                        }
+                        else{
+                            $conLai_dk = $conLai_dk  + (int)$ng->tong;
+                        }
+                        $ht_tong = $ht_tong + (int)$ng->tong;
+                    }
+                    $conLai_tt = $ht_tong-$ht_xong;
+                    if($conLai_dk!=0){
+                        $thuong = $conLai_tt/$conLai_dk;
+                    }
+                    else{
+                        $thuong = 0;
+                    }
+                    if($select_ht=="Có khả năng" and $thuong <= 1.15){
+                        $daihan1[$i]->thuong  = $thuong;
+                        $daihan1[$i]->conLai_dk = $conLai_dk;
+                        $daihan1[$i]->conLai_tt = $conLai_tt;
+                        array_push($daihan, $daihan1[$i]);
+                    }
+                    if($select_ht=="Khó có khả năng" and $thuong >= 1.3){
+                        $daihan1[$i]->thuong  = $thuong;
+                        $daihan1[$i]->conLai_dk = $conLai_dk;
+                        $daihan1[$i]->conLai_tt = $conLai_tt;
+                        array_push($daihan, $daihan1[$i]);
+                    }
+                }
+            }
 
 
         }
 
-        $hoanThanh = ["all", "Có khả năng", "Khó có khả năng"];
-
-        return view('tieuchi',compact('daihan','tieuchi', 'truong','dv','donvi','select_tr','select_tc','select_dv', 'hoanThanh','select_ht'));
+        $hoanThanh = ["Có khả năng", "Khó có khả năng"];
+        if($select_ht=="all"){
+            return view('tieuchi',compact('daihan','tieuchi', 'truong','dv','donvi','select_tr','select_tc','select_dv', 'hoanThanh','select_ht'));
+        }
+        else{
+            return view('tieuchi1',compact('daihan','tieuchi', 'truong','dv','donvi','select_tr','select_tc','select_dv', 'hoanThanh','select_ht'));
+        }
     }
 
 
