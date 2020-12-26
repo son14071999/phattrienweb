@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('homePage');
 })->name('index');
 
-Route::get('don-vi-dao-tao', 'controllerTruong@getDanhsach')->name('dvdd');
+//Route::get('don-vi-dao-tao', 'controllerTruong@getDanhsach')->name('dvdd');
 Route::get('tieu-chi', 'ControllerTieuchi@getTieuchi')->name('tieuchi');
 route::get('trang-chu','ControllerTrangchu@getTrangchu')->name('trangchu');
 Route::get('gioi-thieu', 'ControllerGioithieu@getGioithieu')->name('gioithieu');

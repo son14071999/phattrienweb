@@ -50,7 +50,7 @@
                 <td>{{$daihan[$i]->tong}}</td>
                 <td>{{$daihan[$i]->don_vi}}</td>
                 <td>{{$daihan[$i]->ma_truong}}</td>
-                <td>{{$daihan[$i]->phantram*100}} %</td>
+                <td>{{$daihan[$i]->phantram}} %</td>
 
             </tr>
         @endfor

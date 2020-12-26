@@ -53,6 +53,25 @@
                         @endif
                     @endforeach
                 </select>
+
+
+                <label for="hoanthanh" class="lable-tieuchi">Hoàn thành:</label>
+                <select name="hoanthanh" id="hoanthanh" class="custom-select">
+                    @if($select_ht=='all')
+                        <option value="all" selected>Tổng</option>
+                    @else
+                        <option value="all">Tổng</option>
+                    @endif
+                    @foreach($hoanThanh as $t)
+                        @if($t==$select_ht)
+                            <option value="{{$t}}" selected>{{$t}}</option>
+                        @else
+                            <option value="{{$t}}">{{$t}}</option>
+                        @endif
+                    @endforeach
+                </select>
+
+
                 <button type="submit" class="btn btn-success">Lọc</button>
             </form>
         </div>
@@ -86,11 +105,8 @@
                 <td>{{$daihan[$i]->tong}}</td>
                 <td>{{$daihan[$i]->don_vi}}</td>
                 <td>{{$daihan[$i]->ma_truong}}</td>
-                @if($daihan[$i]->xong/$daihan[$i]->tong <=0.8)
-                    <td><input type="checkbox" disabled></td>
-                @else
-                    <td><input type="checkbox" disabled checked style="background: #0c5460"></td>
-                @endif
+                <td>{{$daihan[$i]->phantram}}</td>
+
             </tr>
         @endfor
 
