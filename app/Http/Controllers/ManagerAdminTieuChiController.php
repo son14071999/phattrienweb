@@ -51,7 +51,7 @@ class ManagerAdminTieuChiController extends Controller
             ->join('truong','truong.id','=','daihan.ma_truong')
             ->join('donvi','donvi.id', '=', 'tieuchi.ma_dv')
             ->where('daihan.ma_truong','=',$truong)
-            ->orderByDesc('daihan.id')->get();
+            ->orderByDesc('daihan.id')->paginate(10);
             return view("admin.tieuchi.all_tieuchi", compact("tieuchi"));
         }
        
@@ -60,7 +60,7 @@ class ManagerAdminTieuChiController extends Controller
             ->join('tieuchi', 'tieuchi.id','=','daihan.ma_tc')
             ->join('truong','truong.id','=','daihan.ma_truong')
             ->join('donvi','donvi.id', '=', 'tieuchi.ma_dv')
-            ->orderByDesc('daihan.id')->get();
+            ->orderByDesc('daihan.id')->paginate(10);
         return view("admin.tieuchi.all_tieuchi", compact("tieuchi"));
         
        
@@ -143,7 +143,7 @@ class ManagerAdminTieuChiController extends Controller
     }
 
     public function list_tieuchi(){
-        $tieuchi = tieuchi::orderBy('id', 'DESC')->get();
+        $tieuchi = tieuchi::orderBy('id', 'DESC')->paginate(10);
         return view("admin.tieuchi.list_tieuchi", compact('tieuchi'));
     }
 

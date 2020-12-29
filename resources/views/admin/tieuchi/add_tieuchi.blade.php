@@ -9,7 +9,7 @@ Thêm chỉ số
       <div class="col-lg-12">
         <h2> Thêm Chỉ Số Tiêu Chí </h2>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"> <a href="{{ URL::to('/admin/index') }}">Trang chủ</a> </li>
+            <li class="breadcrumb-item"> <a href="{{ URL::to('/admin/tieuchi') }}">Trang chủ</a> </li>
             <li class="breadcrumb-item"> <a>Tính năng</a> </li>
           <li class="breadcrumb-item active"> <strong> Thêm Chỉ Số Tiêu Chí </strong> </li>
            

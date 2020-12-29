@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\nganhan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use DB;
 use App\tieuchi;
 use App\donvi;
@@ -23,6 +24,7 @@ class ControllerTieuchi extends Controller
         $tieuchi = tieuchi::all();
         $donvi = donvi::all();
         $daihan = daihan::all();
+        $daihan1 = daihan::paginate(10);
 
         for($i=0;$i<count($daihan);$i++)
         {
@@ -30,6 +32,13 @@ class ControllerTieuchi extends Controller
             $daihan[$i]->ma_truong = truong::where('id',$daihan[$i]->ma_truong)->get()[0]->ten;
             $daihan[$i]->don_vi = donvi::where('id',$daihan[$i]->ma_tc->ma_dv)->get()[0]->ten;
             $daihan[$i]->ma_tc = $daihan[$i]->ma_tc->ten;
+            
+        }
+        foreach($daihan1 as $dh){
+            $dh->ma_tc = tieuchi::where('id',$dh->ma_tc)->get()[0];
+            $dh->ma_truong = truong::where('id',$dh->ma_truong)->get()[0]->ten;
+            $dh->don_vi = donvi::where('id',$dh->ma_tc->ma_dv)->get()[0]->ten;
+            $dh->ma_tc = $dh->ma_tc->ten;
         }
         if($tc!='all')
         {
@@ -63,7 +72,7 @@ class ControllerTieuchi extends Controller
         }
 
 
-        return [$truong, $tieuchi, $donvi, $daihan];
+        return [$truong, $tieuchi, $donvi, $daihan, $daihan1];
     }
 
     function getTieuchi(){
@@ -74,17 +83,18 @@ class ControllerTieuchi extends Controller
         $truong = $g[0];
         $tieuchi = $g[1];
         $donvi = $g[2];
+        $daihan1 = $g[4];
         $daihan = [];
         $hoanThanh = ["Có khả năng", "Khó có khả năng"];
         $select_ht = "all";
-        foreach ($g[3] as $k)
+        foreach ($daihan1 as $k)
         {
             $v = round(($k->xong/$k->tong)*100, 2);
             $k->phantram = $v;
             array_push($daihan, $k);
         }
 
-        return view('tieuchi',compact('daihan','tieuchi', 'truong','donvi','select_tr','select_tc','select_dv', 'hoanThanh','select_ht'));
+        return view('tieuchi',compact('daihan1','daihan','tieuchi', 'truong','donvi','select_tr','select_tc','select_dv', 'hoanThanh','select_ht'));
     }
 
     function getLoc(Request $request){
@@ -92,11 +102,15 @@ class ControllerTieuchi extends Controller
         $select_tr = $request->truong;
         $select_dv = $request->donvi;
         $select_ht = $request->hoanthanh;
+        if($select_tc == "all" && $select_tr == "all" && $select_dv == "all" && $select_ht == "all") {
+            return Redirect::to('/tieu-chi');
+        }
         $g = $this->general($select_tc, $select_tr, $select_dv);
         $truong = $g[0];
         $tieuchi = $g[1];
         $donvi = $g[2];
         $daihan1 = $g[3];
+        
         $nam = 2021;
         $daihan = [];
         for($i=0; $i<count($daihan1); $i++ )
@@ -149,10 +163,10 @@ class ControllerTieuchi extends Controller
 
         $hoanThanh = ["Có khả năng", "Khó có khả năng"];
         if($select_ht=="all"){
-            return view('tieuchi',compact('daihan','tieuchi', 'truong','dv','donvi','select_tr','select_tc','select_dv', 'hoanThanh','select_ht'));
+            return view('loctieuchi',compact('daihan','tieuchi', 'truong','donvi','select_tr','select_tc','select_dv', 'hoanThanh','select_ht'));
         }
         else{
-            return view('tieuchi1',compact('daihan','tieuchi', 'truong','dv','donvi','select_tr','select_tc','select_dv', 'hoanThanh','select_ht'));
+            return view('tieuchi1',compact('daihan','tieuchi', 'truong','donvi','select_tr','select_tc','select_dv', 'hoanThanh','select_ht'));
         }
     }
 
@@ -239,7 +253,7 @@ class ControllerTieuchi extends Controller
 
 
 
-    public function  test1234(Request $request){
+    public function test1234(Request $request){//thong ke theo truong
        $arr = array();
 
        $truong = $request->truong;
@@ -275,6 +289,68 @@ class ControllerTieuchi extends Controller
        array_push($arr, $thuctenamduocchon);
        array_push($arr, $tichluydennamchon);
        return $arr;
+
+    }
+
+    public function ThongKeTheoBanPhuTrach(){
+        $banquanly  = donvi::all();
+        $nam1 = daihan::select(DB::raw('MAX(nam) as max'))->first();
+        $nam2 = daihan::select(DB::raw('MIN(nam) as min'))->first();
+        $nammax = $nam1->max;
+        $nammin = $nam2->min;
+        
+        return view('chart.thongkebanphutrach', compact('banquanly', 'nammax', 'nammin'));
+    }
+
+    public function PostThongKeTheoBanPhuTrach(Request $request) {
+        $nam = $request->nam;
+        $banquanly = $request->banquanly;
+        $tentieuchi = array();
+        $tieuchi = tieuchi::where('ma_dv',$banquanly)->get();
+       
+        $sodunam = (int)$nam%10;
+        if($sodunam > 4){
+            $sodunam = $sodunam - 5;
+        }
+       
+        $daihancuanam = array();
+        $nganhancuanam = array();
+        $arrtongtichluy = array();
+        $arrTenTruongCanTim = array();
+        $arr = array();
+        foreach($tieuchi as $tc){
+            $nganhan = array();
+            $arrtongtl = array();
+            $truongcantim = array();
+            
+            array_push($tentieuchi, (string)($tc->ten));
+           
+            $daihan = daihan::where('ma_tc',$tc->id)->orderBy('ma_truong')->get();
+            array_push($daihancuanam, $daihan);
+            foreach($daihan as $dh) {
+                $tongtichluy = 0;
+                $ngh = daihan::find($dh->id)->nganhan1;
+                array_push($truongcantim, daihan::find($dh->id)->truongdh);
+                array_push($nganhan, $ngh->where('nam',$nam)->first());
+
+                for($i=0; $i <= $sodunam; $i++){
+                    $tongtichluy += $ngh[$i]->xong;
+                }
+                array_push($arrtongtl, $tongtichluy);
+
+            }
+            array_push($arrtongtichluy, $arrtongtl);
+            $arrTenTruongCanTim = $truongcantim;
+            array_push($nganhancuanam, $nganhan);
+            
+        }
+        array_push($arr, $tentieuchi);
+        array_push($arr, $daihancuanam);
+        array_push($arr, $nganhancuanam);
+        array_push($arr, $arrtongtichluy);
+        array_push($arr, $arrTenTruongCanTim);
+      
+        return $arr;
 
     }
 

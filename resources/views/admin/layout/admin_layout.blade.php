@@ -125,13 +125,13 @@
           @endif
           @if(Auth::user()->rule == 1)
           <li class="nav-item">
-            <a class="nav-link nav-toggle" href="javascript:;"> <i class="fa fa-graduation-cap"></i> <span class="title">Đơn vị</span> <span class="arrow"></span> </a>
+            <a class="nav-link nav-toggle" href="javascript:;"> <i class="fa fa-graduation-cap"></i> <span class="title">Ban quản lý</span> <span class="arrow"></span> </a>
             <ul class="sub-menu">
             <li class="nav-item">
-                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/daotao/create') }}"> <span class="title">Thêm đơn vị</span> </a>
+                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/daotao/create') }}"> <span class="title">Thêm ban quản lý</span> </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/daotao') }}"> <span class="title">Danh sách đơn vị</span> </a>
+                <a class="nav-link nav-toggle" href="{{ URL::to('/admin/daotao') }}"> <span class="title">Danh sách ban quản lý</span> </a>
               </li>
             </ul>
           </li>

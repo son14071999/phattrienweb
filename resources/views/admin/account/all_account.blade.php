@@ -39,7 +39,7 @@ Danh sách tài khoản
                       <thead>
                         <tr>
                           <th>id</th>
-                          <th>Tên</th>
+                          <th>Tên tài khoản</th>
                           <th >Email</th>
                           <th>Trường</th>
                           

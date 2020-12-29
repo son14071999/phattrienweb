@@ -1,17 +1,17 @@
-@extends('admin.layout.admin_layout')
-@section('title')
-Danh sách ban quản lý
-@endsection
-@section('content')
+
+<?php $__env->startSection('title'); ?>
+Danh sách trường
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
  <div class="page-content-wrapper animated fadeInRight">
     <div class="page-content">
       <div class="wrapper border-bottom page-heading">
         <div class="col-lg-12">
-          <h2>Danh sách ban quản lý </h2>
+          <h2>Danh sách trường </h2>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"> <a href="{{ URL::to('/admin/tieuchi') }}">Trang chủ</a> </li>
+            <li class="breadcrumb-item"> <a href="<?php echo e(URL::to('/admin/index')); ?>">Trang chủ</a> </li>
             <li class="breadcrumb-item"> <a>Dữ liệu</a> </li>
-            <li class="breadcrumb-item active"> <strong>Danh sách ban quản lý</strong> </li>
+            <li class="breadcrumb-item active"> <strong>Danh sách trường</strong> </li>
             <li class="breadcrumb-item active"> <strong>
                     <?php
                                 $massage = Session::get('massage');
@@ -30,7 +30,7 @@ Danh sách ban quản lý
           <div class="col-lg-12">
             <div class="ibox float-e-margins">
               <div class="ibox-title">
-                <h5>Tất cả ban quản lý </h5>
+                <h5>Tất cả trường </h5>
               </div>
               <div class="ibox-content collapse show">
                 <div class="widgets-container">
@@ -39,49 +39,37 @@ Danh sách ban quản lý
                       <thead>
                         <tr>
                           <th>id</th>
-                          <th>Tên ban quản lý</th>
+                          <th>Tên trường</th>
                           
-                          
+                          <?php if(Auth::user()->rule==1): ?>
                           <th>Sửa/Xóa</th>
+                          <?php endif; ?>
                          
                         </tr>
                       </thead>
-                      @foreach($donvi as $ac)
+                      <?php $__currentLoopData = $truong; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ac): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                       <tbody>
                          <tr>
-                          <td>{{$ac->id}}</td>
-                          <td>{{$ac->ten}}</td>
+                          <td><?php echo e($ac->id); ?></td>
+                          <td><?php echo e($ac->ten); ?></td>
                           
                           
                          
-                          
+                          <?php if(Auth::user()->rule==1): ?>
                           <td>
-                            <span class="sua" style="font-size: 22px"><a href="{{ URL::to('/admin/daotao'.'/'.$ac->id.'/edit') }}"><i class="fa fa-check-square-o" aria-hidden="true"></i></a></span>
-                           {{--  <label class="sss" style="font-size: 20px; color: red">/</label> --}}
-                            <span class="xoa" style="font-size: 22px"><a onclick="return confirm('Are you sure to delete?')" href="{{ URL::to('/delete-donvi/'.$ac->id) }}"><i class="fa fa-times" aria-hidden="true"></i></a></span>
+                            <span class="sua" style="font-size: 22px"><a href="<?php echo e(URL::to('/admin/school'.'/'.$ac->id.'/edit')); ?>"><i class="fa fa-check-square-o" aria-hidden="true"></i></a></span>
+                           
+                            <span class="xoa" style="font-size: 22px"><a onclick="return confirm('Are you sure to delete?')" href="<?php echo e(URL::to('/delete-school/'.$ac->id)); ?>"><i class="fa fa-times" aria-hidden="true"></i></a></span>
                             
                           </td>
+                          <?php endif; ?>
                         </tr>
                       </tbody>
-                     @endforeach
+                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </table>
                 <!-- phan trang -->
                 <div class="phantrang">
-                {{--  <div class="col-sm-12 col-md-7">
-                    <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
-                      <ul class="pagination">
-                        <li class="paginate_button page-item previous" id="example_previous">
-                             <a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                        </li>
-                        <li class="paginate_button page-item ">
-                          <a href="#" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                        </li>
-                          <li class="paginate_button page-item next disabled" id="example_next">
-                            <a href="#" aria-controls="example" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div> --}}
+                
                   
                 </div>
 
@@ -110,4 +98,5 @@ Danh sách ban quản lý
   </div>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout.admin_layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\dragon\Desktop\phattrienweb\resources\views/admin/school/all_school.blade.php ENDPATH**/ ?>

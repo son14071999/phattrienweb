@@ -39,7 +39,7 @@ Danh sách trường
                       <thead>
                         <tr>
                           <th>id</th>
-                          <th>Tên</th>
+                          <th>Tên trường</th>
                           
                           @if(Auth::user()->rule==1)
                           <th>Sửa/Xóa</th>

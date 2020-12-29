@@ -45,6 +45,8 @@ Route::post('getnamthongke', 'ControllerTieuchi@getnamthongke')->name('getnamtho
 //Route::post('gettruongthongke', 'ControllerTieuchi@gettruongthongke')->name('gettruongthongke');
 Route::post('test1234', 'ControllerTieuchi@test1234')->name('test1234');
 Route::get('test1', 'ControllerTieuchi@test1')->name('test1');
+Route::get('thongke-theobanphutrach', 'ControllerTieuchi@ThongKeTheoBanPhuTrach')->name('banphutrach');
+Route::post('getthongketheobanphutrach', 'ControllerTieuchi@PostThongKeTheoBanPhuTrach')->name('thongketheobanphutrach');
 $ManagerAdminController = 'ManagerAdminController@';
 // Route::get("/admin/index", $ManagerAdminController.'index');
 

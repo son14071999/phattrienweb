@@ -9,7 +9,7 @@ Cập nhật tiến độ công việc
       <div class="col-lg-12">
         <h2> Cập nhật hoàn thành công việc của tiêu chí : {{$tentc}} năm {{$nam}}</h2>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"> <a href="{{ URL::to('/admin/index') }}">Trang chủ</a> </li>
+            <li class="breadcrumb-item"> <a href="{{ URL::to('/admin/tieuchi') }}">Trang chủ</a> </li>
             <li class="breadcrumb-item"> <a>Tính năng</a> </li>
           <li class="breadcrumb-item active"> <strong> Cập nhật Tiêu Chí </strong> </li>
            

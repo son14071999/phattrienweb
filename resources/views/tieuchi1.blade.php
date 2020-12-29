@@ -1,5 +1,13 @@
 @extends('index')
 @section('content')
+<style>
+     #donvi {
+        width: 130px;
+    }
+    #hoanthanh {
+        width: 130px;
+    }
+</style>
     <div class="row">
         {{--        <div class="col-sm-2"></div>--}}
         <div class="chitieu-select">

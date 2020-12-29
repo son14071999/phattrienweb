@@ -9,7 +9,7 @@ Sửa tài khoản
       <div class="col-lg-12">
         <h2> Sửa tài khoản </h2>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"> <a href="{{ URL::to('/admin/index') }}">Trang chủ</a> </li>
+            <li class="breadcrumb-item"> <a href="{{ URL::to('/admin/tieuchi') }}">Trang chủ</a> </li>
             <li class="breadcrumb-item"> <a>Tính năng</a> </li>
           <li class="breadcrumb-item active"> <strong> Sửa tài khoản </strong> </li>
            

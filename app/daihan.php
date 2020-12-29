@@ -28,5 +28,10 @@ class daihan extends Model
         return $this->belongsTo('App\tieuchi','ma_tc','id');
     }
 
+    public function truongdh()
+    {
+        return $this->hasOne('App\truong','id','ma_truong');
+    }
+
     public $timestamps = false;
 }

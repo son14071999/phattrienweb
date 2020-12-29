@@ -9,7 +9,7 @@ Tất cả tiêu chí
         <div class="col-lg-12">
           <h2>Danh sách tiêu chí ngắn hạn : {{$tentc}}</h2>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"> <a href="{{ URL::to('/admin/index') }}">Trang chủ</a> </li>
+            <li class="breadcrumb-item"> <a href="{{ URL::to('/admin/tieuchi') }}">Trang chủ</a> </li>
             <li class="breadcrumb-item"> <a>Dữ liệu</a> </li>
             <li class="breadcrumb-item active"> <strong>Danh sách tiêu chí </strong> </li>
             <li class="breadcrumb-item active"> <strong>

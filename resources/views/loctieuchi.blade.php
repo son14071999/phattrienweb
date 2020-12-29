@@ -1,17 +1,7 @@
 @extends('index')
 @section('content')
 <style>
-    .page-link {
-        color: rgb(32, 207, 32);
-    }
-    .page-item.active .page-link {
-        background-color: #38B445;
-        border-color:#38B445;
-    }
-    .pagination {
-        justify-content: flex-end;
-    }
-    #donvi {
+     #donvi {
         width: 130px;
     }
     #hoanthanh {
@@ -131,6 +121,6 @@
         </tbody>
     </table>
     <div class="paginate">
-        {{$daihan1->links()}}
+       
     </div>
 @endsection

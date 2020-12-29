@@ -9,7 +9,7 @@ Sửa Chỉ Số Tiêu Chí
       <div class="col-lg-12">
         <h2> Sửa Chỉ Số Tiêu Chí {{$tieuchi->ten}} năm {{$daihan->nam}}  </h2>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"> <a href="{{ URL::to('/admin/index') }}">Trang chủ</a> </li>
+            <li class="breadcrumb-item"> <a href="{{ URL::to('/admin/tieuchi') }}">Trang chủ</a> </li>
             <li class="breadcrumb-item"> <a>Tính năng</a> </li>
           <li class="breadcrumb-item active"> <strong> Sửa Chỉ Số Tiêu Chí </strong> </li>
            

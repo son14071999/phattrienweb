@@ -62,7 +62,7 @@ class ManagerAdminDaotaoController extends Controller
         $donvi = new donvi();
         $donvi->ten = $request->tendonvi;
         $donvi->save();
-        Session::put('massage',' thêm đơn vị thành công!');
+        Session::put('massage',' thêm ban quản lý thành công!');
         return Redirect::to('/admin/daotao');
     }
 
@@ -103,7 +103,7 @@ class ManagerAdminDaotaoController extends Controller
         $donvi = donvi::find($id);
         $donvi->ten = $request->tendonvi;
         $donvi->save();
-        Session::put('massage',' cập nhật đơn vị thành công!');
+        Session::put('massage',' cập nhật ban quản lý thành công!');
         return Redirect::to('/admin/daotao');
         
     }
@@ -124,7 +124,7 @@ class ManagerAdminDaotaoController extends Controller
         $donvi = donvi::find($id);
        
         $donvi->delete();
-        Session::put('massage',' xóa đơn vị thành công!');
+        Session::put('massage',' xóa ban quản lý thành công!');
         return Redirect::to('/admin/daotao');
     }
 }

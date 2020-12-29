@@ -1,15 +1,15 @@
-@extends('admin.layout.admin_layout')
-@section('title')
+
+<?php $__env->startSection('title'); ?>
 Tất cả tiêu chí
-@endsection
-@section('content')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('content'); ?>
  <div class="page-content-wrapper animated fadeInRight">
     <div class="page-content">
       <div class="wrapper border-bottom page-heading">
         <div class="col-lg-12">
           <h2>Danh sách tiêu chí  </h2>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"> <a href="{{ URL::to('/admin/tieuchi') }}">Trang chủ</a> </li>
+            <li class="breadcrumb-item"> <a href="<?php echo e(URL::to('/admin/tieuchi')); ?>">Trang chủ</a> </li>
             <li class="breadcrumb-item"> <a>Dữ liệu</a> </li>
             <li class="breadcrumb-item active"> <strong>Danh sách tiêu chí</strong> </li>
             <li class="breadcrumb-item active"> <strong>
@@ -48,46 +48,33 @@ Tất cả tiêu chí
                          
                         </tr>
                       </thead>
-                      @foreach($tieuchi as $tc)
+                      <?php $__currentLoopData = $tieuchi; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                       <tbody>
                          <tr>
-                          <td>{{$tc->id}}</td>
-                          <td>{{$tc->ten}}</td>
-                          <td>{{$tc->moTa}}</td>
+                          <td><?php echo e($tc->id); ?></td>
+                          <td><?php echo e($tc->ten); ?></td>
+                          <td><?php echo e($tc->moTa); ?></td>
                           
-                          <td>{{$tc->donvi1->ten}}</td>
+                          <td><?php echo e($tc->donvi1->ten); ?></td>
                          
                          
                           
                           <td>
-                            <span class="sua" style="font-size: 22px"><a href="{{ URL::to('/admin/edit-tieuchi'.'/'.$tc->id) }}"><i class="fa fa-check-square-o" aria-hidden="true"></i></a></span>
-                           {{--  <label class="sss" style="font-size: 20px; color: red">/</label> --}}
+                            <span class="sua" style="font-size: 22px"><a href="<?php echo e(URL::to('/admin/edit-tieuchi'.'/'.$tc->id)); ?>"><i class="fa fa-check-square-o" aria-hidden="true"></i></a></span>
                            
-                            <span class="xoa" style="font-size: 22px"><a onclick="return confirm('Are you sure to delete?')" href="{{ URL::to('/admin/detete-tieuchi'.'/'.$tc->id) }}"><i class="fa fa-times" aria-hidden="true"></i></a></span>
+                           
+                            <span class="xoa" style="font-size: 22px"><a onclick="return confirm('Are you sure to delete?')" href="<?php echo e(URL::to('/admin/detete-tieuchi'.'/'.$tc->id)); ?>"><i class="fa fa-times" aria-hidden="true"></i></a></span>
                             
                           </td>
                         </tr>
                       </tbody>
-                     @endforeach
+                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </table>
                 <!-- phan trang -->
                 <div class="phantrang">
-                {{ $tieuchi->links()}}
-                {{--  <div class="col-sm-12 col-md-7">
-                    <div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
-                      <ul class="pagination">
-                        <li class="paginate_button page-item previous" id="example_previous">
-                             <a href="#" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
-                        </li>
-                        <li class="paginate_button page-item ">
-                          <a href="#" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                        </li>
-                          <li class="paginate_button page-item next disabled" id="example_next">
-                            <a href="#" aria-controls="example" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div> --}}
+                <?php echo e($tieuchi->links()); ?>
+
+                
                   
                 </div>
 
@@ -116,4 +103,5 @@ Tất cả tiêu chí
   </div>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('admin.layout.admin_layout', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\dragon\Desktop\phattrienweb\resources\views/admin/tieuchi/list_tieuchi.blade.php ENDPATH**/ ?>
