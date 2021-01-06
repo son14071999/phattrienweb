@@ -4,7 +4,7 @@
 
 
     <div>Kết quả tìm kiếm cho:"<b>{{$search}}</b>"</div>
-    <table class="table table-hover">
+    <table class="responstable">
         <thead>
         <tr>
             <th>stt</th>
