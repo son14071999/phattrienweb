@@ -21,9 +21,8 @@ Route::get('/', function () {
 Route::get('tieu-chi', 'ControllerTieuchi@getTieuchi')->name('tieuchi');
 route::get('trang-chu','ControllerTrangchu@getTrangchu')->name('trangchu');
 
-Route::get('gioi-thieu', function(){
-    return "error 404";
-})->name('gioithieu');
+Route::get('gioi-thieu', function () {
+    return view('gioithieu');})->name('gioithieu');
 
 Route::get('login', 'ControllerAccount@getLogin')->name('getLogin');
 Route::get('login/forget-pass', 'ControllerAccount@viewforgetpass')->name('forgetpass');
