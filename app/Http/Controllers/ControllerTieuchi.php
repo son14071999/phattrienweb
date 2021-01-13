@@ -32,7 +32,7 @@ class ControllerTieuchi extends Controller
             $daihan[$i]->ma_truong = truong::where('id',$daihan[$i]->ma_truong)->get()[0]->ten;
             $daihan[$i]->don_vi = donvi::where('id',$daihan[$i]->ma_tc->ma_dv)->get()[0]->ten;
             $daihan[$i]->ma_tc = $daihan[$i]->ma_tc->ten;
-            
+
         }
         foreach($daihan1 as $dh){
             $dh->ma_tc = tieuchi::where('id',$dh->ma_tc)->get()[0];
@@ -110,7 +110,7 @@ class ControllerTieuchi extends Controller
         $tieuchi = $g[1];
         $donvi = $g[2];
         $daihan1 = $g[3];
-        
+
         $nam = 2021;
         $daihan = [];
         for($i=0; $i<count($daihan1); $i++ )
@@ -150,7 +150,7 @@ class ControllerTieuchi extends Controller
                         array_push($daihan, $daihan1[$i]);
                     }
                     if($select_ht=="Khó có khả năng" and $thuong >= 1.3){
-                        $daihan1[$i]->thuong  = $thuong;
+                        $daihan1[$i]->thuong  = round($thuong*100, 2);
                         $daihan1[$i]->conLai_dk = $conLai_dk;
                         $daihan1[$i]->conLai_tt = $conLai_tt;
                         array_push($daihan, $daihan1[$i]);
@@ -298,7 +298,7 @@ class ControllerTieuchi extends Controller
         $nam2 = daihan::select(DB::raw('MIN(nam) as min'))->first();
         $nammax = $nam1->max;
         $nammin = $nam2->min;
-        
+
         return view('chart.thongkebanphutrach', compact('banquanly', 'nammax', 'nammin'));
     }
 
@@ -307,12 +307,12 @@ class ControllerTieuchi extends Controller
         $banquanly = $request->banquanly;
         $tentieuchi = array();
         $tieuchi = tieuchi::where('ma_dv',$banquanly)->get();
-       
+
         $sodunam = (int)$nam%10;
         if($sodunam > 4){
             $sodunam = $sodunam - 5;
         }
-       
+
         $daihancuanam = array();
         $nganhancuanam = array();
         $arrtongtichluy = array();
@@ -322,9 +322,9 @@ class ControllerTieuchi extends Controller
             $nganhan = array();
             $arrtongtl = array();
             $truongcantim = array();
-            
+
             array_push($tentieuchi, (string)($tc->ten));
-           
+
             $daihan = daihan::where('ma_tc',$tc->id)->orderBy('ma_truong')->get();
             array_push($daihancuanam, $daihan);
             foreach($daihan as $dh) {
@@ -342,14 +342,14 @@ class ControllerTieuchi extends Controller
             array_push($arrtongtichluy, $arrtongtl);
             $arrTenTruongCanTim = $truongcantim;
             array_push($nganhancuanam, $nganhan);
-            
+
         }
         array_push($arr, $tentieuchi);
         array_push($arr, $daihancuanam);
         array_push($arr, $nganhancuanam);
         array_push($arr, $arrtongtichluy);
         array_push($arr, $arrTenTruongCanTim);
-      
+
         return $arr;
 
     }
@@ -391,38 +391,39 @@ class ControllerTieuchi extends Controller
         return view('truong',compact('daihan','option','select_op','select_tr'));
     }
 
-    public function getLoctruong(Request $request){
-        $option = ["all","Hoàn thành","Chưa hoàn thành"];
-        $select_op = $request->tieuchi;
-        $select_tc = "all";
-        $select_tr = $request->truong;
-        $select_dv = "all";
-        $g = $this->general($select_tc, $select_tr, $select_dv);
-        $daihan = [];
-        foreach ($g[3] as $k)
-        {
-            $v = $k->xong/$k->tong;
-            if ($select_op=="all")
-            {
-                $k->phantram = $v;
-                array_push($daihan, $k);
-            }
-            if ($select_op=="Hoàn thành" and $v >= 0.8)
-            {
-                $k->phantram = $v;
-                array_push($daihan, $k);
-            }
-            if ($select_op=="Chưa hoàn thành" and $v < 0.8)
-            {
-                $k->phantram = $v;
-                array_push($daihan, $k);
-            }
-        }
-
-//        $daihan = $g[3];
-
-        return view('truong',compact('daihan','option','select_op','select_tr'));
-    }
+//    public function getLoctruong(Request $request){
+//        $option = ["all","Hoàn thành","Chưa hoàn thành"];
+//        $select_op = $request->tieuchi;
+//        $select_tc = "all";
+//        $select_tr = $request->truong;
+//        $select_dv = "all";
+//        $g = $this->general($select_tc, $select_tr, $select_dv);
+//        $daihan = [];
+//        foreach ($g[3] as $k)
+//        {
+//            $v = $k->xong/$k->tong;
+//            if ($select_op=="all")
+//            {
+//                $k->phantram = $v;
+//                array_push($daihan, $k);
+//            }
+//            if ($select_op=="Hoàn thành" and $v >= 0.8)
+//            {
+//                $k->phantram = $v;
+//                array_push($daihan, $k);
+//            }
+//            if ($select_op=="Chưa hoàn thành" and $v < 0.8)
+//            {
+////                $k->phantram = round($v, 4);
+//                $k->phantram = 0;
+//                array_push($daihan, $k);
+//            }
+//        }
+//
+////        $daihan = $g[3];
+//
+//        return view('truong',compact('daihan','option','select_op','select_tr'));
+//    }
 
 
 
