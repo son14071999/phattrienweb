@@ -144,7 +144,7 @@ class ControllerTieuchi extends Controller
                         $thuong = 0;
                     }
                     if($select_ht=="Có khả năng" and $thuong <= 1.15){
-                        $daihan1[$i]->thuong  = $thuong;
+                        $daihan1[$i]->thuong  = round($thuong*100, 2);
                         $daihan1[$i]->conLai_dk = $conLai_dk;
                         $daihan1[$i]->conLai_tt = $conLai_tt;
                         array_push($daihan, $daihan1[$i]);
